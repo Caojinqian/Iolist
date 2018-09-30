@@ -1,0 +1,29 @@
+F:\Project\VS Projects\Excel操作\Excel操作\bin\Debug\Excel操作.exe.config
+F:\Project\VS Projects\Excel操作\Excel操作\bin\Debug\Excel操作.exe
+F:\Project\VS Projects\Excel操作\Excel操作\bin\Debug\Excel操作.pdb
+F:\Project\VS Projects\Excel操作\Excel操作\obj\Debug\Excel操作.csprojResolveAssemblyReference.cache
+F:\Project\VS Projects\Excel操作\Excel操作\obj\Debug\Excel操作.Form1.resources
+F:\Project\VS Projects\Excel操作\Excel操作\obj\Debug\Excel操作.Properties.Resources.resources
+F:\Project\VS Projects\Excel操作\Excel操作\obj\Debug\Excel操作.csproj.GenerateResource.Cache
+F:\Project\VS Projects\Excel操作\Excel操作\obj\Debug\Excel操作.exe
+F:\Project\VS Projects\Excel操作\Excel操作\obj\Debug\Excel操作.pdb
+F:\BaiduYunDownload\Excel操作\Excel操作\bin\Debug\Excel操作.exe.config
+F:\BaiduYunDownload\Excel操作\Excel操作\bin\Debug\Excel操作.exe
+F:\BaiduYunDownload\Excel操作\Excel操作\bin\Debug\Excel操作.pdb
+F:\BaiduYunDownload\Excel操作\Excel操作\obj\Debug\Excel操作.Form1.resources
+F:\BaiduYunDownload\Excel操作\Excel操作\obj\Debug\Excel操作.Properties.Resources.resources
+F:\BaiduYunDownload\Excel操作\Excel操作\obj\Debug\Excel操作.csproj.GenerateResource.Cache
+F:\BaiduYunDownload\Excel操作\Excel操作\obj\Debug\Excel操作.csproj.CoreCompileInputs.cache
+F:\BaiduYunDownload\Excel操作\Excel操作\obj\Debug\Excel操作.exe
+F:\BaiduYunDownload\Excel操作\Excel操作\obj\Debug\Excel操作.pdb
+F:\BaiduYunDownload\Excel操作\Excel操作\obj\Debug\Excel操作.csprojResolveAssemblyReference.cache
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.Form1.resources
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.Properties.Resources.resources
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.csproj.GenerateResource.Cache
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.csproj.CoreCompileInputs.cache
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\bin\Debug\音锋电气程序Iolist转换工具V1.0.exe.config
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\bin\Debug\音锋电气程序Iolist转换工具V1.0.exe
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\bin\Debug\音锋电气程序Iolist转换工具V1.0.pdb
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\obj\Debug\音锋电气程序Iolist转换工具V1.0.exe
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\obj\Debug\音锋电气程序Iolist转换工具V1.0.pdb
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.csprojResolveAssemblyReference.cache
