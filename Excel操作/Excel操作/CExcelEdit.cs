@@ -80,14 +80,15 @@ namespace Excel操作
             //wb = wbs[1];//获取工作簿  
             // wb = wbs.Open("2");
             // ws = (Excel.Worksheet)wb.ActiveSheet;
-            //string[]  WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
-            //, "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
+            string[]  WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
+            , "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
 
-            
-            //string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP07", "LCP08"};
-           // string[] WorkSheetName = { "LCP10", "LCP11" ,"LCP12", "LCP13", "LCP14", };
-            //string[] WorkSheetName = { "LCP15", "LCP16", "LCP17",  "LCP19", "LCP20", "LCP21", "LCP22", };
-              string[] WorkSheetName = { "LCP23", "LCP24", "LCP25", "LCP26",};
+
+            //  string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04"};
+           // string[] WorkSheetName = { "LCP05", "LCP06", "LCP08", "LCP09" };
+           // string[] WorkSheetName = { "LCP07", "LCP10" ,"LCP11"};
+            //string[] WorkSheetName = { "LCP14", "LCP15" };
+           
 
 
 
@@ -476,11 +477,12 @@ namespace Excel操作
                 {
 
                     IoListNum = Convert.ToString(ws.Cells[IoListRow, 4].Value);
+                    IoListSymbol = ws.Cells[IoListRow, 6].Value;
                     //IoListNum == WorkSheetName[OpNumTemp]
                     if (IoListNum !=null)
                     { 
                     if (IoListNum.Contains("LCP") )
-                        IoListQs = "QS"+ "0"+(OpNumTemp+1);
+                        IoListQs = IoListSymbol;
                     else
                             IoListRow = IoListRow + 1;
                     }
@@ -527,12 +529,12 @@ namespace Excel操作
 
             //wb = wbs[1];//获取工作簿
             //ws = (Excel.Worksheet)wb.ActiveSheet;
-            //   string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
-            //   , "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
-            string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP07", "LCP08"};
-            //string[] WorkSheetName = { "LCP10", "LCP11" ,"LCP12", "LCP13", "LCP14", };
-           // string[] WorkSheetName = { "LCP15", "LCP16", "LCP17",  "LCP19", "LCP20", "LCP21", "LCP22", };
-        // string[] WorkSheetName = { "LCP23", "LCP24", "LCP25", "LCP26",};
+           string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
+              , "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
+            // string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04"};
+           // string[] WorkSheetName = { "LCP05", "LCP06", "LCP08", "LCP09" };
+            //string[] WorkSheetName = { "LCP07", "LCP10" ,"LCP11"};
+           //string[] WorkSheetName = { "LCP14", "LCP15" };
 
 
 
@@ -648,10 +650,10 @@ namespace Excel操作
                                     symbolName = IoListNum + "_Fault";
                                 }
 
-                                /*   else if  (IoListSymbol == "QS")
+                                   else if ( IoListSymbol.Contains("QS"))
                                    {
-                                       ws1.Cells[InoutRow, InoutQs] = IoListQs;
-                                   } */
+                                    symbolName = IoListSymbol;
+                                } 
                                 else if (IoListSymbol == "QF")
                                 {
                                     symbolName = "QF" + IoListNum;
@@ -964,10 +966,10 @@ namespace Excel操作
                     sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
                     sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
                     sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
-                    //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
-                    // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
-                    sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
-                    sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                     sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                     sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                    //sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                   // sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
                     sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
                     sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
                     sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
@@ -991,10 +993,10 @@ namespace Excel操作
                         sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
                         sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
                         sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
-                        //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
-                        // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
-                        sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
-                        sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                         sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                         sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                        //sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                       // sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
                         sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
                         sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
                         sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
@@ -1016,10 +1018,10 @@ namespace Excel操作
                         sw.Write("\r\n" + " UP_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
                         sw.Write("\r\n" + " DN_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
                         sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
-                        //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
-                        // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
-                        sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
-                        sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                        sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                        sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                        //sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                        //sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
                         sw.Write("\r\n" + " UP_Manual_Button:=" + Manual_FW + ",");
                         sw.Write("\r\n" + " DN_Manual_Button:=" + Manual_BW + ",");
                         sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");                                         
