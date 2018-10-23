@@ -115,7 +115,7 @@ namespace Excel操作
             int InoutSA1 = 23;    //安全开关1
             int InoutSA2 = 24;    //安全开关2
             int InoutSA3 = 25;    //安全开关3
-          //  int InoutSA4 = 26;    //安全开关4
+            int InoutSA4 = 26;    //安全开关4
             int InoutBQ6 = 27;    //光电管6
             int InoutBQ7 = 28;    //光电管7
             int InoutBQ8 = 29;    //光电管8
