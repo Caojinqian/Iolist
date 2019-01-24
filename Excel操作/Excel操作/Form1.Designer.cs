@@ -59,7 +59,7 @@ namespace Excel操作
             // 
             // operate2
             // 
-            this.operate2.Location = new System.Drawing.Point(65, 191);
+            this.operate2.Location = new System.Drawing.Point(524, 212);
             this.operate2.Name = "operate2";
             this.operate2.Size = new System.Drawing.Size(78, 42);
             this.operate2.TabIndex = 1;
@@ -73,7 +73,7 @@ namespace Excel操作
             // 
             // OPBox
             // 
-            this.OPBox.Location = new System.Drawing.Point(149, 120);
+            this.OPBox.Location = new System.Drawing.Point(524, 134);
             this.OPBox.Name = "OPBox";
             this.OPBox.Size = new System.Drawing.Size(52, 21);
             this.OPBox.TabIndex = 3;
@@ -83,7 +83,7 @@ namespace Excel操作
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 253);
+            this.label1.Location = new System.Drawing.Point(12, 315);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(203, 24);
             this.label1.TabIndex = 4;
@@ -93,7 +93,7 @@ namespace Excel操作
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(54, 121);
+            this.label2.Location = new System.Drawing.Point(378, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 5;
@@ -102,16 +102,16 @@ namespace Excel操作
             // PictureBox1
             // 
             this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
-            this.PictureBox1.Location = new System.Drawing.Point(347, 264);
+            this.PictureBox1.Location = new System.Drawing.Point(534, 315);
             this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(253, 67);
+            this.PictureBox1.Size = new System.Drawing.Size(254, 66);
             this.PictureBox1.TabIndex = 12;
             this.PictureBox1.TabStop = false;
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Location = new System.Drawing.Point(32, 315);
+            this.Label3.Location = new System.Drawing.Point(12, 362);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(53, 12);
             this.Label3.TabIndex = 15;
@@ -120,7 +120,7 @@ namespace Excel操作
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 299);
+            this.label4.Location = new System.Drawing.Point(71, 362);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 12);
             this.label4.TabIndex = 14;
@@ -128,7 +128,7 @@ namespace Excel操作
             // 
             // SelectFile
             // 
-            this.SelectFile.Location = new System.Drawing.Point(46, 30);
+            this.SelectFile.Location = new System.Drawing.Point(12, 241);
             this.SelectFile.Name = "SelectFile";
             this.SelectFile.Size = new System.Drawing.Size(75, 23);
             this.SelectFile.TabIndex = 16;
@@ -139,7 +139,7 @@ namespace Excel操作
             // FileName
             // 
             this.FileName.AutoSize = true;
-            this.FileName.Location = new System.Drawing.Point(56, 76);
+            this.FileName.Location = new System.Drawing.Point(12, 282);
             this.FileName.Name = "FileName";
             this.FileName.Size = new System.Drawing.Size(53, 12);
             this.FileName.TabIndex = 17;
@@ -147,7 +147,7 @@ namespace Excel操作
             // 
             // symbolbutton
             // 
-            this.symbolbutton.Location = new System.Drawing.Point(213, 191);
+            this.symbolbutton.Location = new System.Drawing.Point(524, 267);
             this.symbolbutton.Name = "symbolbutton";
             this.symbolbutton.Size = new System.Drawing.Size(78, 42);
             this.symbolbutton.TabIndex = 18;
@@ -157,18 +157,18 @@ namespace Excel操作
             // 
             // offsetBox
             // 
-            this.offsetBox.Location = new System.Drawing.Point(372, 37);
+            this.offsetBox.Location = new System.Drawing.Point(682, 37);
             this.offsetBox.Name = "offsetBox";
             this.offsetBox.Size = new System.Drawing.Size(52, 21);
             this.offsetBox.TabIndex = 19;
-            this.offsetBox.Text = "1";
+            this.offsetBox.Text = "100";
             this.offsetBox.TextChanged += new System.EventHandler(this.offsetBox_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(231, 33);
+            this.label5.Location = new System.Drawing.Point(544, 38);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 20);
             this.label5.TabIndex = 20;
@@ -177,7 +177,7 @@ namespace Excel操作
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(467, 206);
+            this.button1.Location = new System.Drawing.Point(682, 267);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 42);
             this.button1.TabIndex = 21;
@@ -187,7 +187,7 @@ namespace Excel操作
             // 
             // 片区Box
             // 
-            this.片区Box.Location = new System.Drawing.Point(499, 155);
+            this.片区Box.Location = new System.Drawing.Point(736, 191);
             this.片区Box.Name = "片区Box";
             this.片区Box.Size = new System.Drawing.Size(52, 21);
             this.片区Box.TabIndex = 22;
@@ -197,7 +197,7 @@ namespace Excel操作
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(359, 156);
+            this.label6.Location = new System.Drawing.Point(650, 192);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 23;
@@ -207,7 +207,7 @@ namespace Excel操作
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 336);
+            this.ClientSize = new System.Drawing.Size(800, 383);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.片区Box);
             this.Controls.Add(this.button1);

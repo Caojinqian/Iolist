@@ -58,8 +58,103 @@ namespace Excel操作
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          //  excelEdit.Open("C:\\Users\\CDXY\\Desktop\\新建 Microsoft Excel 97-2003 工作表.xls");
+            //  excelEdit.Open("C:\\Users\\CDXY\\Desktop\\新建 Microsoft Excel 97-2003 工作表.xls");
+
+            //string filePath = "C:\\Users\\cao\\Desktop\\test.xlsx";
+            string[] workName = GetExcelSheetNames("C:\\Users\\cao\\Desktop\\test.xlsx");
+            string[] ABC = workName;      // { "LCP01", "LCP02", "LCP03", "LCP04", "LCP05", "LCP06", "LCP07" };
+
+            for (int i = 0; i < ABC.Length; i++)
+            {
+                CheckBox chk = new CheckBox();
+                chk.Name = ABC[i];
+                chk.Text = ABC[i];
+                chk.Visible = true;
+                chk.Location = new Point(10, 10 + i * 20); //你根据实际值计算
+                chk.CheckedChanged += chk_CheckedChanged;
+
+                this.Controls.Add(chk);
+            }
+
+            #region 获取Excel工作薄中Sheet页(工作表)名集合
+            /// <summary> 
+            /// 获取Excel工作薄中Sheet页(工作表)名集合
+            /// </summary> 
+            /// <param name="excelFile">Excel文件名称及路径,EG:C:\Users\JK\Desktop\导入測试.xls</param> 
+            /// <returns>Sheet页名称集合</returns> 
+
+
+
         }
+
+        private static String[] GetExcelSheetNames(string fileName)
+        {
+            OleDbConnection objConn = null;
+            System.Data.DataTable dt = null;
+            try
+            {
+                string connString = string.Empty;
+                string FileType = fileName.Substring(fileName.LastIndexOf("."));
+                if (FileType == ".xls")
+                    connString = "Provider=Microsoft.Jet.OLEDB.4.0;" +
+                       "Data Source=" + fileName + ";Extended Properties=Excel 8.0;";
+                else//.xlsx
+                    connString = "Provider=Microsoft.ACE.OLEDB.12.0;" + "Data Source=" + fileName + ";" + ";Extended Properties=\"Excel 12.0;HDR=YES;IMEX=1\"";
+                // 创建连接对象 
+                objConn = new OleDbConnection(connString);
+                // 打开数据库连接 
+                objConn.Open();
+                // 得到包括数据架构的数据表 
+                dt = objConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                if (dt == null)
+                {
+                    return null;
+                }
+                String[] excelSheets = new String[dt.Rows.Count];
+                int i = 0;
+                // 加入工作表名称到字符串数组 
+                foreach (DataRow row in dt.Rows)
+                {
+                    string strSheetTableName = row["TABLE_NAME"].ToString();
+                    //过滤无效SheetName
+                    if (strSheetTableName.Contains("$") && strSheetTableName.Replace("'", "").EndsWith("$"))
+                    {
+                        excelSheets[i] = strSheetTableName.Substring(0, strSheetTableName.Length - 1);
+                    }
+                    i++;
+                }
+                return excelSheets;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                // 清理 
+                if (objConn != null)
+                {
+                    objConn.Close();
+                    objConn.Dispose();
+                }
+                if (dt != null)
+                {
+                    dt.Dispose();
+                }
+            }
+        }
+        #endregion
+
+
+
+        void chk_CheckedChanged(object sender, EventArgs e)
+        {
+            string filename = (sender as CheckBox).Text; //获取文件名
+                                                         //加载文件代码
+        }
+
+
+
 
         private void button1_Click(object sender, EventArgs e)//YES
         {

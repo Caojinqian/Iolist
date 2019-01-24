@@ -80,14 +80,14 @@ namespace Excel操作
             //wb = wbs[1];//获取工作簿  
             // wb = wbs.Open("2");
             // ws = (Excel.Worksheet)wb.ActiveSheet;
-            string[]  WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
-            , "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
+           // string[]  WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
+           // , "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
+              
 
-
-            //  string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04"};
-           // string[] WorkSheetName = { "LCP05", "LCP06", "LCP08", "LCP09" };
-           // string[] WorkSheetName = { "LCP07", "LCP10" ,"LCP11"};
-            //string[] WorkSheetName = { "LCP14", "LCP15" };
+            // string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04"};
+               string[] WorkSheetName = { "LCP05", "LCP06", "LCP08", "LCP09" };
+            // string[] WorkSheetName = { "LCP07", "LCP10" ,"LCP11"};
+            // string[] WorkSheetName = { "LCP14", "LCP15" };
            
 
 
@@ -155,6 +155,7 @@ namespace Excel操作
                 //  int InoutQs = 5 ;
                
                 ws = (Excel.Worksheet)wb.Worksheets[WorkSheetName[OpNumTemp]];
+                
                 ws1 = (Excel.Worksheet)wb.Worksheets["OP01"];
                 ws1.Cells[1, 1] = "平面号";
                 ws1.Cells[1, 2] = "设备偏移量";
@@ -529,10 +530,10 @@ namespace Excel操作
 
             //wb = wbs[1];//获取工作簿
             //ws = (Excel.Worksheet)wb.ActiveSheet;
-           string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
-              , "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
-            // string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04"};
-           // string[] WorkSheetName = { "LCP05", "LCP06", "LCP08", "LCP09" };
+           //string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
+           //   , "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
+          //  string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04"};
+          string[] WorkSheetName = { "LCP05", "LCP06", "LCP08", "LCP09" };
             //string[] WorkSheetName = { "LCP07", "LCP10" ,"LCP11"};
            //string[] WorkSheetName = { "LCP14", "LCP15" };
 
@@ -565,11 +566,12 @@ namespace Excel操作
                 int IoListRow = 7;//行
                 string symbolRowTemp = null;
 
-                
-                //  int InoutQs = 5 ;
 
-                ws = (Excel.Worksheet)wb.Worksheets[WorkSheetName[OpNumTemp]];
-                ws1 = (Excel.Worksheet)wb.Worksheets["PLCTags"];
+                //  int InoutQs = 5 ;
+                //
+                // ws = (Excel.Worksheet)wb.Worksheets[WorkSheetName[OpNumTemp]];
+                ws = (Excel.Worksheet)wb.Worksheets[0];
+                ws1 = (Excel.Worksheet)wb.Worksheets["PLC Tags"];
 
                 //初始化表格
                 ws1.Cells[1, 1] = "Name";
@@ -1117,7 +1119,15 @@ namespace Excel操作
                 ws = (Excel.Worksheet)wb.Worksheets[SheetName];
                 return ws;
             }
-            public Excel.Worksheet AddSheet(string SheetName)
+
+
+        public Excel.Worksheet GetShee1t(Int32 SheetNum)
+        //获取一个工作表
+        {
+            ws = (Excel.Worksheet)wb.Worksheets[SheetNum];
+            return ws;
+        }
+        public Excel.Worksheet AddSheet(string SheetName)
             //添加一个工作表,在第一个位置添加
             {
                 Excel.Worksheet s = (Excel.Worksheet)wb.Worksheets.Add(Type.Missing, Type.Missing, Type.Missing, Type.Missing);//首位置添加
