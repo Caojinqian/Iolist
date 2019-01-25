@@ -79,7 +79,7 @@ namespace Excel操作
             this.OPBox.Name = "OPBox";
             this.OPBox.Size = new System.Drawing.Size(52, 21);
             this.OPBox.TabIndex = 3;
-            this.OPBox.Text = "1";
+            this.OPBox.Text = "0";
             this.OPBox.TextChanged += new System.EventHandler(this.OPBox_TextChanged);
             // 
             // label1

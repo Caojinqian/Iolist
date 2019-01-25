@@ -153,16 +153,17 @@ namespace Excel操作
 
 
 
-        private void operate2_Click(object sender, EventArgs e)// IOlist转换
+        private void operate2_Click(object sender, EventArgs e)//
         {
             
             if (FileName.Text != null &&( FileName.Text.Contains(".xlsx")|| FileName.Text.Contains(".xls")))
             {
                 int OpNum = lcpNameLength(PublicValue.LcpName);           
                 int offset = Convert.ToInt16(offsetBox.Text);
+                string 片区 = 片区Box.Text;
                 if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    excelEdit.operate2(OpNum, offset, FileName.Text,PublicValue.LcpName);
+                    excelEdit.operate2(片区,OpNum, offset, FileName.Text,PublicValue.LcpName);
                     excelEdit.Close();
                     MessageBox.Show("全部转换成功");
                     
@@ -213,7 +214,7 @@ namespace Excel操作
                 int OpNum = lcpNameLength(PublicValue.LcpName);                                                          // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
                 if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    excelEdit.operate3(OpNum, FileName.Text);
+                    excelEdit.operate3(OpNum, FileName.Text, PublicValue.LcpName);
                     excelEdit.Close();
                     MessageBox.Show("全部转换成功");                   
                     //delete
@@ -262,8 +263,8 @@ namespace Excel操作
         private void button2_Click(object sender, EventArgs e)
         {
              
-            string[] workName = GetExcelSheetNames("C:\\Users\\cao\\Desktop\\test.xlsx");
-
+            string[] workName = new string[30];
+            
             if (FileName.Text != null && (FileName.Text.Contains(".xlsx") || FileName.Text.Contains(".xls")))
             {
                 workName = GetExcelSheetNames(FileName.Text);

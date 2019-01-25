@@ -68,12 +68,11 @@ namespace Excel操作
         {
             Create();      
            
-            ws.Cells[1, 1] = "周小周";
-            ws.Cells[2, 1] = "nihao";
+           
             ws.SaveAs("F:\\BaiduYunDownload\\Excel操作\\example.xlsx", missing, missing, missing, missing, missing, missing, missing, missing, missing);
             Close();
         }
-        public void operate2(int value,int offset,string FileName,string [] sheetName)//打开 写，并另存为
+        public void operate2(string 片区, int value,int offset,string FileName,string [] sheetName)//打开 写，并另存为
         {
             //Open("F:\\BaiduYunDownload\\Excel操作\\新建 Microsoft Excel 工作表.xlsx");
             Open(FileName);
@@ -89,7 +88,7 @@ namespace Excel操作
             // string[] WorkSheetName = { "LCP07", "LCP10" ,"LCP11"};
             // string[] WorkSheetName = { "LCP14", "LCP15" };
            
-
+           
 
 
             int OpNum = value;
@@ -156,7 +155,7 @@ namespace Excel操作
                
                 ws = (Excel.Worksheet)wb.Worksheets[WorkSheetName[OpNumTemp]];
                 
-                ws1 = (Excel.Worksheet)wb.Worksheets["OP01"];
+                ws1 = (Excel.Worksheet)wb.Worksheets[片区];
                 ws1.Cells[1, 1] = "平面号";
                 ws1.Cells[1, 2] = "设备偏移量";
                 ws1.Cells[1, 3] = "母设备";
@@ -524,7 +523,7 @@ namespace Excel操作
         }
 
 
-        public void operate3(int value, string FileName)//打开读，失败
+        public void operate3(int value, string FileName, string[] sheetName)//打开读，失败
         {
             Open(FileName);
 
@@ -533,7 +532,7 @@ namespace Excel操作
            //string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04", "LCP05", "LCP06", "LCP07", "LCP08", "LCP09", "LCP10", "LCP11"
            //   , "LCP12", "LCP13", "LCP14", "LCP15", "LCP16", "LCP17", "LCP18", "LCP19", "LCP20"};
           //  string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04"};
-          string[] WorkSheetName = { "LCP05", "LCP06", "LCP08", "LCP09" };
+          string[] WorkSheetName = sheetName;
             //string[] WorkSheetName = { "LCP07", "LCP10" ,"LCP11"};
            //string[] WorkSheetName = { "LCP14", "LCP15" };
 
@@ -569,8 +568,8 @@ namespace Excel操作
 
                 //  int InoutQs = 5 ;
                 //
-                // ws = (Excel.Worksheet)wb.Worksheets[WorkSheetName[OpNumTemp]];
-                ws = (Excel.Worksheet)wb.Worksheets[0];
+                 ws = (Excel.Worksheet)wb.Worksheets[WorkSheetName[OpNumTemp]];
+                //ws = (Excel.Worksheet)wb.Worksheets[0];
                 ws1 = (Excel.Worksheet)wb.Worksheets["PLC Tags"];
 
                 //初始化表格
