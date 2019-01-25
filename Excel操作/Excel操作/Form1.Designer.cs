@@ -49,6 +49,8 @@ namespace Excel操作
             this.button1 = new System.Windows.Forms.Button();
             this.片区Box = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.myDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +61,7 @@ namespace Excel操作
             // 
             // operate2
             // 
-            this.operate2.Location = new System.Drawing.Point(524, 212);
+            this.operate2.Location = new System.Drawing.Point(588, 154);
             this.operate2.Name = "operate2";
             this.operate2.Size = new System.Drawing.Size(78, 42);
             this.operate2.TabIndex = 1;
@@ -73,7 +75,7 @@ namespace Excel操作
             // 
             // OPBox
             // 
-            this.OPBox.Location = new System.Drawing.Point(524, 134);
+            this.OPBox.Location = new System.Drawing.Point(682, 74);
             this.OPBox.Name = "OPBox";
             this.OPBox.Size = new System.Drawing.Size(52, 21);
             this.OPBox.TabIndex = 3;
@@ -93,16 +95,17 @@ namespace Excel操作
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(378, 134);
+            this.label2.Location = new System.Drawing.Point(574, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "LCP数量:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // PictureBox1
             // 
             this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
-            this.PictureBox1.Location = new System.Drawing.Point(534, 315);
+            this.PictureBox1.Location = new System.Drawing.Point(534, 308);
             this.PictureBox1.Name = "PictureBox1";
             this.PictureBox1.Size = new System.Drawing.Size(254, 66);
             this.PictureBox1.TabIndex = 12;
@@ -147,7 +150,7 @@ namespace Excel操作
             // 
             // symbolbutton
             // 
-            this.symbolbutton.Location = new System.Drawing.Point(524, 267);
+            this.symbolbutton.Location = new System.Drawing.Point(588, 222);
             this.symbolbutton.Name = "symbolbutton";
             this.symbolbutton.Size = new System.Drawing.Size(78, 42);
             this.symbolbutton.TabIndex = 18;
@@ -177,7 +180,7 @@ namespace Excel操作
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(682, 267);
+            this.button1.Location = new System.Drawing.Point(682, 222);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 42);
             this.button1.TabIndex = 21;
@@ -187,7 +190,7 @@ namespace Excel操作
             // 
             // 片区Box
             // 
-            this.片区Box.Location = new System.Drawing.Point(736, 191);
+            this.片区Box.Location = new System.Drawing.Point(682, 108);
             this.片区Box.Name = "片区Box";
             this.片区Box.Size = new System.Drawing.Size(52, 21);
             this.片区Box.TabIndex = 22;
@@ -197,17 +200,39 @@ namespace Excel操作
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(650, 192);
+            this.label6.Location = new System.Drawing.Point(584, 109);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 23;
             this.label6.Text = "片区:";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(488, 154);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(78, 42);
+            this.button2.TabIndex = 24;
+            this.button2.Text = "刷新表";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(488, 222);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(78, 42);
+            this.button3.TabIndex = 25;
+            this.button3.Text = "选中所需";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 383);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.片区Box);
             this.Controls.Add(this.button1);
@@ -254,6 +279,8 @@ namespace Excel操作
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox 片区Box;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

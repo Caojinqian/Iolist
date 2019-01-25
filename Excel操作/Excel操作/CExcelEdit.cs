@@ -73,7 +73,7 @@ namespace Excel操作
             ws.SaveAs("F:\\BaiduYunDownload\\Excel操作\\example.xlsx", missing, missing, missing, missing, missing, missing, missing, missing, missing);
             Close();
         }
-        public void operate2(int value,int offset,string FileName)//打开 写，并另存为
+        public void operate2(int value,int offset,string FileName,string [] sheetName)//打开 写，并另存为
         {
             //Open("F:\\BaiduYunDownload\\Excel操作\\新建 Microsoft Excel 工作表.xlsx");
             Open(FileName);
@@ -85,7 +85,7 @@ namespace Excel操作
               
 
             // string[] WorkSheetName = { "LCP01", "LCP02" ,"LCP03", "LCP04"};
-               string[] WorkSheetName = { "LCP05", "LCP06", "LCP08", "LCP09" };
+               string[] WorkSheetName = sheetName;
             // string[] WorkSheetName = { "LCP07", "LCP10" ,"LCP11"};
             // string[] WorkSheetName = { "LCP14", "LCP15" };
            
