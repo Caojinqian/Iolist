@@ -153,7 +153,7 @@ namespace Excel操作
 
 
 
-        private void operate2_Click(object sender, EventArgs e)//YES
+        private void operate2_Click(object sender, EventArgs e)// IOlist转换
         {
             
             if (FileName.Text != null &&( FileName.Text.Contains(".xlsx")|| FileName.Text.Contains(".xls")))
@@ -204,7 +204,7 @@ namespace Excel操作
 
         }
 
-        private void symbolbutton_Click(object sender, EventArgs e)
+        private void symbolbutton_Click(object sender, EventArgs e) //生成符号表
         {
  
             if (FileName.Text != null && (FileName.Text.Contains(".xlsx") || FileName.Text.Contains(".xls")))
@@ -235,7 +235,7 @@ namespace Excel操作
 
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
+        private void button1_Click_2(object sender, EventArgs e) //生成手动程序
         {
             
             if (FileName.Text != null && (FileName.Text.Contains(".xlsx") || FileName.Text.Contains(".xls")))
@@ -245,7 +245,6 @@ namespace Excel操作
                 // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
                 if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                  
                     excelEdit.operate4(片区, FileName.Text);
                     excelEdit.Close();
                     MessageBox.Show("全部转换成功");
