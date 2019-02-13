@@ -36,3 +36,4 @@ G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Exc
 G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.csproj.CoreCompileInputs.cache
 G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\音锋电气程序Iolist转换工具V1.0.exe
 G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\音锋电气程序Iolist转换工具V1.0.pdb
+G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.csprojAssemblyReference.cache

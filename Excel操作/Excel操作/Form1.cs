@@ -247,7 +247,7 @@ namespace Excel操作
                 // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
                 if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    excelEdit.Status(片区, FileName.Text);
+                    excelEdit.Manual(片区, FileName.Text);
                     excelEdit.Close();
                     MessageBox.Show("全部转换成功");
                    
