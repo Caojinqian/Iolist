@@ -158,12 +158,13 @@ namespace Excel操作
             
             if (FileName.Text != null &&( FileName.Text.Contains(".xlsx")|| FileName.Text.Contains(".xls")))
             {
-                int OpNum = lcpNameLength(PublicValue.LcpName);           
+                int OpNum = lcpNameLength(PublicValue.LcpName);
+             
                 int offset = Convert.ToInt16(offsetBox.Text);
                 string 片区 = 片区Box.Text;
                 if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    excelEdit.operate2(片区,OpNum, offset, FileName.Text,PublicValue.LcpName);
+                    excelEdit.输入输出表(片区,OpNum, offset, FileName.Text,PublicValue.LcpName);
                     excelEdit.Close();
                     MessageBox.Show("全部转换成功");
                     
@@ -214,7 +215,7 @@ namespace Excel操作
                 int OpNum = lcpNameLength(PublicValue.LcpName);                                                          // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
                 if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    excelEdit.operate3(OpNum, FileName.Text, PublicValue.LcpName);
+                    excelEdit.符号表(OpNum, FileName.Text, PublicValue.LcpName);
                     excelEdit.Close();
                     MessageBox.Show("全部转换成功");                   
                     //delete
@@ -236,7 +237,7 @@ namespace Excel操作
 
         }
 
-        private void button1_Click_2(object sender, EventArgs e) //生成手动程序
+        private void button1_Click_2(object sender, EventArgs e) //生成电机诊断程序
         {
             
             if (FileName.Text != null && (FileName.Text.Contains(".xlsx") || FileName.Text.Contains(".xls")))
@@ -246,7 +247,7 @@ namespace Excel操作
                 // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
                 if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    excelEdit.operate4(片区, FileName.Text);
+                    excelEdit.Status(片区, FileName.Text);
                     excelEdit.Close();
                     MessageBox.Show("全部转换成功");
                    
@@ -396,6 +397,83 @@ namespace Excel操作
 
 
             OPBox.Text = lcpNameLength(PublicValue.LcpName).ToString();
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)  //生成输入映射程序
+        {
+            if (FileName.Text != null && (FileName.Text.Contains(".xlsx") || FileName.Text.Contains(".xls")))
+            {
+                int OpNum = lcpNameLength(PublicValue.LcpName);    //Convert.ToInt16(OPBox.Text);
+                string 片区 = 片区Box.Text;
+                // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
+                if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    excelEdit.InputTranfer(片区, FileName.Text);
+                    excelEdit.Close();
+                    MessageBox.Show("全部转换成功");
+
+                    //delete
+                }
+            }
+            else
+            {
+                MessageBox.Show("没有找到相应文件或者没有找到Excel文件，请重新查找文件");
+            }
+
+        }
+
+        private void Output_Click(object sender, EventArgs e) //生成输出映射程序
+        {
+            if (FileName.Text != null && (FileName.Text.Contains(".xlsx") || FileName.Text.Contains(".xls")))
+            {
+                int OpNum = lcpNameLength(PublicValue.LcpName);    //Convert.ToInt16(OPBox.Text);
+                string 片区 = 片区Box.Text;
+                // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
+                if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    excelEdit.OutputTranfer(片区, FileName.Text);
+                    excelEdit.Close();
+                    MessageBox.Show("全部转换成功");
+
+                    //delete
+                }
+            }
+            else
+            {
+                MessageBox.Show("没有找到相应文件或者没有找到Excel文件，请重新查找文件");
+            }
+        }
+
+        private void Status_Click(object sender, EventArgs e)
+        {
+            if (FileName.Text != null && (FileName.Text.Contains(".xlsx") || FileName.Text.Contains(".xls")))
+            {
+                int OpNum = lcpNameLength(PublicValue.LcpName);    //Convert.ToInt16(OPBox.Text);
+                string 片区 = 片区Box.Text;
+                // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
+                if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    excelEdit.Status(片区, FileName.Text);
+                    excelEdit.Close();
+                    MessageBox.Show("全部转换成功");
+
+                    //delete
+                }
+            }
+            else
+            {
+                MessageBox.Show("没有找到相应文件或者没有找到Excel文件，请重新查找文件");
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
 
         }
         #endregion

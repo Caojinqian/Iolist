@@ -46,11 +46,14 @@ namespace Excel操作
             this.symbolbutton = new System.Windows.Forms.Button();
             this.offsetBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.手动程序btn = new System.Windows.Forms.Button();
             this.片区Box = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.Input = new System.Windows.Forms.Button();
+            this.Output = new System.Windows.Forms.Button();
+            this.Status = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.myDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +78,7 @@ namespace Excel操作
             // 
             // OPBox
             // 
-            this.OPBox.Location = new System.Drawing.Point(682, 74);
+            this.OPBox.Location = new System.Drawing.Point(605, 74);
             this.OPBox.Name = "OPBox";
             this.OPBox.Size = new System.Drawing.Size(52, 21);
             this.OPBox.TabIndex = 3;
@@ -85,17 +88,18 @@ namespace Excel操作
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 315);
+            this.label1.Location = new System.Drawing.Point(10, 310);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 24);
+            this.label1.Size = new System.Drawing.Size(317, 60);
             this.label1.TabIndex = 4;
-            this.label1.Text = "说明：表格命名方式为LCP01 LCP03  \r\n复制一个OP01的输入输出表\r\n";
+            this.label1.Text = "说明：表格命名方式为LCP01 LCP03  \r\nIOList转换、符号表、输入输出转换  需要打开IOlist表\r\n电机诊断、手动程序             " +
+    "   需要打开电机数据表\r\n电机数据表需要根据IOlist生成的表复制相应的电机平面号\r\n\r\n";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(574, 75);
+            this.label2.Location = new System.Drawing.Point(487, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 5;
@@ -105,7 +109,7 @@ namespace Excel操作
             // PictureBox1
             // 
             this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
-            this.PictureBox1.Location = new System.Drawing.Point(534, 308);
+            this.PictureBox1.Location = new System.Drawing.Point(572, 338);
             this.PictureBox1.Name = "PictureBox1";
             this.PictureBox1.Size = new System.Drawing.Size(254, 66);
             this.PictureBox1.TabIndex = 12;
@@ -114,20 +118,21 @@ namespace Excel操作
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Location = new System.Drawing.Point(12, 362);
+            this.Label3.Location = new System.Drawing.Point(149, 387);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(53, 12);
             this.Label3.TabIndex = 15;
-            this.Label3.Text = "20180918";
+            this.Label3.Text = "20190213";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(71, 362);
+            this.label4.Location = new System.Drawing.Point(12, 387);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 12);
             this.label4.TabIndex = 14;
             this.label4.Text = "电气部出品V1.2 C#";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // SelectFile
             // 
@@ -160,7 +165,7 @@ namespace Excel操作
             // 
             // offsetBox
             // 
-            this.offsetBox.Location = new System.Drawing.Point(682, 37);
+            this.offsetBox.Location = new System.Drawing.Point(605, 37);
             this.offsetBox.Name = "offsetBox";
             this.offsetBox.Size = new System.Drawing.Size(52, 21);
             this.offsetBox.TabIndex = 19;
@@ -171,26 +176,26 @@ namespace Excel操作
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(544, 38);
+            this.label5.Location = new System.Drawing.Point(486, 38);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 20);
             this.label5.TabIndex = 20;
             this.label5.Text = "设备偏移量:";
             this.label5.Click += new System.EventHandler(this.label5_Click_1);
             // 
-            // button1
+            // 手动程序btn
             // 
-            this.button1.Location = new System.Drawing.Point(682, 222);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 42);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "手动程序生成";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.手动程序btn.Location = new System.Drawing.Point(697, 222);
+            this.手动程序btn.Name = "手动程序btn";
+            this.手动程序btn.Size = new System.Drawing.Size(106, 42);
+            this.手动程序btn.TabIndex = 21;
+            this.手动程序btn.Text = "手动程序生成";
+            this.手动程序btn.UseVisualStyleBackColor = true;
+            this.手动程序btn.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // 片区Box
             // 
-            this.片区Box.Location = new System.Drawing.Point(682, 108);
+            this.片区Box.Location = new System.Drawing.Point(605, 108);
             this.片区Box.Name = "片区Box";
             this.片区Box.Size = new System.Drawing.Size(52, 21);
             this.片区Box.TabIndex = 22;
@@ -200,7 +205,7 @@ namespace Excel操作
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(584, 109);
+            this.label6.Location = new System.Drawing.Point(487, 109);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 23;
@@ -208,7 +213,7 @@ namespace Excel操作
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(488, 154);
+            this.button2.Location = new System.Drawing.Point(487, 154);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(78, 42);
             this.button2.TabIndex = 24;
@@ -218,7 +223,7 @@ namespace Excel操作
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(488, 222);
+            this.button3.Location = new System.Drawing.Point(487, 222);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(78, 42);
             this.button3.TabIndex = 25;
@@ -226,16 +231,49 @@ namespace Excel操作
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // Input
+            // 
+            this.Input.Location = new System.Drawing.Point(697, 38);
+            this.Input.Name = "Input";
+            this.Input.Size = new System.Drawing.Size(106, 42);
+            this.Input.TabIndex = 26;
+            this.Input.Text = "输入程序生成";
+            this.Input.UseVisualStyleBackColor = true;
+            this.Input.Click += new System.EventHandler(this.button1_Click_3);
+            // 
+            // Output
+            // 
+            this.Output.Location = new System.Drawing.Point(697, 96);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(106, 42);
+            this.Output.TabIndex = 27;
+            this.Output.Text = "输出程序生成";
+            this.Output.UseVisualStyleBackColor = true;
+            this.Output.Click += new System.EventHandler(this.Output_Click);
+            // 
+            // Status
+            // 
+            this.Status.Location = new System.Drawing.Point(697, 154);
+            this.Status.Name = "Status";
+            this.Status.Size = new System.Drawing.Size(106, 42);
+            this.Status.TabIndex = 28;
+            this.Status.Text = "电机诊断程序";
+            this.Status.UseVisualStyleBackColor = true;
+            this.Status.Click += new System.EventHandler(this.Status_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 383);
+            this.ClientSize = new System.Drawing.Size(823, 406);
+            this.Controls.Add(this.Status);
+            this.Controls.Add(this.Output);
+            this.Controls.Add(this.Input);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.片区Box);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.手动程序btn);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.offsetBox);
             this.Controls.Add(this.symbolbutton);
@@ -276,11 +314,14 @@ namespace Excel操作
         private System.Windows.Forms.Button symbolbutton;
         private System.Windows.Forms.TextBox offsetBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button 手动程序btn;
         private System.Windows.Forms.TextBox 片区Box;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Input;
+        private System.Windows.Forms.Button Output;
+        private System.Windows.Forms.Button Status;
     }
 }
 
