@@ -1432,6 +1432,96 @@ namespace Excel操作
                             sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
                             MRow++;
                         }
+                        else if (M2type == 4)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorStandard_UPDN" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                            // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + Manual_BW + ",");
+                            //  sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                            // sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                            sw.Write("\r\n" + " PRX1A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ1_高位" + ",");
+                            sw.Write("\r\n" + " PRX2A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ2_低位" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                            sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+                            MRow++;
+                        }
+                        else if (M2type == 5)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorStandard_UPDN" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                            // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + Manual_BW + ",");
+                            //  sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                            // sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                            sw.Write("\r\n" + " PRX1A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ1_高位" + ",");
+                            sw.Write("\r\n" + " PRX2A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ2_低位" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                            sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+                            MRow++;
+                        }
+                        else if (M2type == 6)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorStandard_UPDN" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                            // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + Manual_BW + ",");
+                            //  sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                            // sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                            sw.Write("\r\n" + " PRX1A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ1_高位" + ",");
+                            sw.Write("\r\n" + " PRX2A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ2_低位" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                            sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+                            MRow++;
+                        }
+                        else { MRow++; }
+
+
+
+
+
                     }
 
 
@@ -1477,7 +1567,7 @@ namespace Excel操作
                 StreamWriter sw = new StreamWriter(fs);
                 //开始写入
 
-                sw.Write("FUNCTION" + "  " + "\"" + "InputTransfer_" + 片区 + "\"" + ": Void");
+                sw.Write("FUNCTION_BLOCK" + "  " + "\"" + "InputTransfer_" + 片区 + "\"" );
                 sw.Write("\r\n" + @"{ S7_Optimized_Access:=" + @"'TRUE' }");
                 sw.Write("\r\n" + "VERSION: 0.1");
                 sw.Write("\r\n" + "VAR");
@@ -1490,7 +1580,7 @@ namespace Excel操作
                         string M_NO = Convert.ToString(ws1.Cells[MRow, 1].Value);
                         if (M_NO != null)
                         {
-                            sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#InputTransfer" + "\"" + ";");
+                            sw.Write("\r\n" +"M"+ M_NO + ":" + "\"" + "#YF#InputTransfer" + "\"" + ";");
                         }
                     }
                     catch { }
@@ -1514,7 +1604,7 @@ namespace Excel操作
                     {
                         int M_NOTemp = Convert.ToInt32(ws1.Cells[MRow, 1].Value);
                         string M_NO = Convert.ToString(ws1.Cells[MRow, 1].Value);
-                        string M_OFFSET = Convert.ToString(ws.Cells[MRow, 2].Value); ;
+                        string M_OFFSET = Convert.ToString(ws1.Cells[MRow, 2].Value); ;
                         string Original_M = Convert.ToString(ws1.Cells[MRow, 3].Value); ;
                         string Original_Offset = Convert.ToString(ws1.Cells[MRow, 4].Value); ;
                         string QS = Convert.ToString(ws1.Cells[MRow, 5].Value); ;
@@ -1552,7 +1642,7 @@ namespace Excel操作
                         if (M_NO != null)
                         {
                             sw.Write("\r\n" + @"///" + M_NO + "输入信号映射");
-                            sw.Write("\r\n" + M_NO + "(");
+                            sw.Write("\r\n" +"#M"+ M_NO + "(");
                             sw.Write("\r\n" + " M_ID:=" + M_NO + ",");
                             // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                             sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET);
@@ -1916,7 +2006,7 @@ namespace Excel操作
                     MRow = MRow + 1;
                 } while (Convert.ToString(ws.Cells[MRow, 1].Value) != "end" && MRow < 200);
                 sw.Write("\r\n");
-                sw.Write("\r\n" + "END_FUNCTION ");
+                sw.Write("\r\n" + "END_FUNCTION_BLOCK ");
 
                 //Save(); 
                 sw.Flush();
@@ -1943,10 +2033,10 @@ namespace Excel操作
 
             ws1 = (Excel.Worksheet)wb.Worksheets[片区];
             int MRow = 4;
-            int offset = 0;
-            int M1or2 = 0;
-            int M2type = 0;
-            int ActualmNum = 0;
+           // int offset = 0;
+           // int M1or2 = 0;
+           // int M2type = 0;
+            //int ActualmNum = 0;
             string saveNmaeText = "Output_" + 片区 + ".scl";
 
             txtname = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, saveNmaeText);
@@ -1954,7 +2044,7 @@ namespace Excel操作
             StreamWriter sw = new StreamWriter(fs);
             //开始写入
 
-            sw.Write("FUNCTION" + "  " + "\"" + "InputTransfer_" + 片区 + "\"" + ": Void");
+            sw.Write("FUNCTION" + "  " + "\"" + "OutputTransfer_" + 片区 + "\"" );
             sw.Write("\r\n" + @"{ S7_Optimized_Access:=" + @"'TRUE' }");
             sw.Write("\r\n" + "VERSION: 0.1");
             sw.Write("\r\n" + "VAR");
@@ -1967,7 +2057,7 @@ namespace Excel操作
                         string M_NO = Convert.ToString(ws1.Cells[MRow, 1].Value);
                         if (M_NO != null)
                         {
-                            sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#OutputTransfer" + "\"" + ";");
+                            sw.Write("\r\n" +"M"+ M_NO + ":" + "\"" + "#YF#OutputTransfer" + "\"" + ";");
                         }
                     }
                     catch { }
@@ -1987,7 +2077,7 @@ namespace Excel操作
                     {
                         int M_NOTemp = Convert.ToInt32(ws1.Cells[MRow, 1].Value);
                         string M_NO = Convert.ToString(ws1.Cells[MRow, 1].Value);
-                        string M_OFFSET = Convert.ToString(ws.Cells[MRow, 2].Value);
+                        string M_OFFSET = Convert.ToString(ws1.Cells[MRow, 2].Value);
                         string Original_M = Convert.ToString(ws1.Cells[MRow, 3].Value);
                         string Original_Offset = Convert.ToString(ws1.Cells[MRow, 4].Value);
                         string FW = Convert.ToString(ws1.Cells[MRow, 37].Value); ;
@@ -2008,7 +2098,7 @@ namespace Excel操作
                         {
 
                             sw.Write("\r\n" + @"///" + M_NO + "输出信号映射");
-                            sw.Write("\r\n" + M_NO + "(");
+                            sw.Write("\r\n" +"#M"+ M_NO + "(");
                             sw.Write("\r\n" + " M_ID:=" + M_NO + ",");
                             // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                             sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET);
@@ -2175,7 +2265,7 @@ namespace Excel操作
                 MRow = MRow + 1;
             } while (Convert.ToString(ws.Cells[MRow, 1].Value) != "end" && MRow < 200);
             sw.Write("\r\n");
-            sw.Write("\r\n" + "END_FUNCTION ");
+            sw.Write("\r\n" + "END_FUNCTION_BLOCK ");
 
             //Save(); 
             sw.Flush();
@@ -2206,7 +2296,7 @@ namespace Excel操作
                 string offset = "0"; //偏移量
                 string M1or2 = "0";    //平面号传递
                 string M2Type = "0";   //设备2类型
-                int ActualmNum = 0;  
+              //  int ActualmNum = 0;  
                 string saveNmaeText = 片区 + "_status.scl";
                 //清空缓冲区
 
@@ -2236,7 +2326,7 @@ namespace Excel操作
                 StreamWriter sw = new StreamWriter(fs);
                 //开始写入
 
-                sw.Write("FUNCTION" + "  " + "\"" + 片区 + "_status" + "\"" + ": Void");
+                sw.Write("FUNCTION" + "  " + "\"" + 片区 + "_status" + "\"" );
                 sw.Write("\r\n" + @"{ S7_Optimized_Access:=" + @"'TRUE' }");
                 sw.Write("\r\n" + "VERSION: 0.1");
                 sw.Write("\r\n" + "VAR");
@@ -2256,33 +2346,33 @@ namespace Excel操作
                             if (M1or2 == "1")
                             {
                                 if (M1Type == "1")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusSTHF" + "\"" + ";"); }
+                                { sw.Write("\r\n" +"M"+ M_NO + ":" + "\"" + "#YF#StatusSTHF" + "\"" + ";"); }
                                 else if (M1Type == "2")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusVF" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusVF" + "\"" + ";"); }
                                 else if (M1Type == "3")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusST" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusST" + "\"" + ";"); }
                                 else if (M1Type == "4")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusPHIX" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusPHIX" + "\"" + ";"); }
                                 else if (M1Type == "5")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusIO" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M"+ M_NO + ":" + "\"" + "#YF#StatusIO" + "\"" + ";"); }
                                 else if (M1Type == "6")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusIO_VF" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusIO_VF" + "\"" + ";"); }
                             }
 
                              else if (M1or2 == "2" || M1or2 == "3" || M1or2 == "4" || M1or2 == "5" || M1or2 == "6")
                             {
                                 if (M2Type == "1")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusSTHF" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusSTHF" + "\"" + ";"); }
                                 else if (M2Type == "2")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusVF" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusVF" + "\"" + ";"); }
                                 else if (M2Type == "3")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusST" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + "M" + M_NO + ":" + "\"" + "#YF#StatusST" + "\"" + ";"); }
                                 else if (M2Type == "4")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusPHIX" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusPHIX" + "\"" + ";"); }
                                 else if (M2Type == "5")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusIO" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusIO" + "\"" + ";"); }
                                 else if (M2Type == "6")
-                                { sw.Write("\r\n" + M_NO + ":" + "\"" + "#YF#StatusIO_VF" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusIO_VF" + "\"" + ";"); }
                             }
 
 
@@ -2341,7 +2431,7 @@ namespace Excel操作
                             if (M1Type == "1")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "故障诊断程序");
-                                sw.Write("\r\n" + MNum + "(");
+                                sw.Write("\r\n" + "M" + MNum + "(");
                                 sw.Write("\r\n" + " M_ID:=" + MNum + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2374,8 +2464,8 @@ namespace Excel操作
                             else if (M1Type == "2")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "故障诊断程序");
-                                sw.Write("\r\n" + MNum + "(");
-                                sw.Write("\r\n" + " M_ID:=" + MNum + ",");
+                                sw.Write("\r\n" + "#M" + MNum + "(");
+                                sw.Write("\r\n" +"M"+ " M_ID:=" + MNum + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
                                 sw.Write("," + "\r\n" + " Address:= " + (M2Num * M_AD_M + M_AD_C));
@@ -2407,7 +2497,7 @@ namespace Excel操作
                             else if (M1Type == "3")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "故障诊断程序");
-                                sw.Write("\r\n" + MNum + "(");
+                                sw.Write("\r\n" + "M" + MNum + "(");
                                 sw.Write("\r\n" + " M_ID:=" + MNum + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2440,7 +2530,7 @@ namespace Excel操作
                             else if (M1Type == "4")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "故障诊断程序");
-                                sw.Write("\r\n" + MNum + "(");
+                                sw.Write("\r\n" + "M" + MNum + "(");
                                 sw.Write("\r\n" + " M_ID:=" + MNum + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2473,7 +2563,7 @@ namespace Excel操作
                             else if (M1Type == "5")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "故障诊断程序");
-                                sw.Write("\r\n" + MNum + "(");
+                                sw.Write("\r\n" + "M" + MNum + "(");
                                 sw.Write("\r\n" + " M_ID:=" + MNum + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);                            
@@ -2504,7 +2594,7 @@ namespace Excel操作
                             else if (M1Type == "6")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "故障诊断程序");
-                                sw.Write("\r\n" + MNum + "(");
+                                sw.Write("\r\n" + "M" + MNum + "(");
                                 sw.Write("\r\n" + " M_ID:=" + MNum + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2531,7 +2621,7 @@ namespace Excel操作
                             if (M2Type == "1")
                             {
                                 sw.Write("\r\n" + @"///" + MNum +"." +M1or2+"故障诊断程序");
-                                sw.Write("\r\n" + MNum + "(");
+                                sw.Write("\r\n" + "M" + MNum + "(");
                                 sw.Write("\r\n" + " M_ID:=" + M2Num + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2564,7 +2654,7 @@ namespace Excel操作
                             else if (M2Type == "2")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "." + M1or2 + "故障诊断程序");
-                                sw.Write("\r\n" + MNum + "(");
+                                sw.Write("\r\n" + "M" + MNum + "(");
                                 sw.Write("\r\n" + " M_ID:=" + M2Num + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2597,7 +2687,7 @@ namespace Excel操作
                             else if (M2Type == "3")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "." + M1or2 + "故障诊断程序");
-                                sw.Write("\r\n" + M2Num + "(");
+                                sw.Write("\r\n" + "M" + M2Num + "(");
                                 sw.Write("\r\n" + " M_ID:=" + M2Num + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2630,7 +2720,7 @@ namespace Excel操作
                             else if (M2Type == "4")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "." + M1or2 + "故障诊断程序");
-                                sw.Write("\r\n" + M2Num + "(");
+                                sw.Write("\r\n" + "M" + M2Num + "(");
                                 sw.Write("\r\n" + " M_ID:=" + M2Num + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2663,7 +2753,7 @@ namespace Excel操作
                             else if (M2Type == "5")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "." + M1or2 + "故障诊断程序");
-                                sw.Write("\r\n" + M2Num + "(");
+                                sw.Write("\r\n" + "M" + M2Num + "(");
                                 sw.Write("\r\n" + " M_ID:=" + M2Num + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2694,7 +2784,7 @@ namespace Excel操作
                             else if (M2Type == "6")
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "." + M1or2 + "故障诊断程序");
-                                sw.Write("\r\n" + M2Num + "(");
+                                sw.Write("\r\n" + "M" + M2Num + "(");
                                 sw.Write("\r\n" + " M_ID:=" + M2Num + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
@@ -2723,7 +2813,7 @@ namespace Excel操作
 
                     MRow++;
                 } while (Convert.ToString(ws1.Cells[MRow, 1].Value) != "end" && MRow < 200);
-                sw.Write("\r\n" + "END_FUNCTION ");
+                sw.Write("\r\n" + "END_FUNCTION_BLOCK ");
 
 
                 //Save(); 
