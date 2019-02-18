@@ -2432,20 +2432,20 @@ namespace Excel操作
                             {
                                 sw.Write("\r\n" + @"///" + MNum + "故障诊断程序");
                                 sw.Write("\r\n" + "#M" + MNum + "(");
-                                sw.Write("\r\n" +"M"+ " M_ID:=" + MNum + ",");
+                                sw.Write("\r\n" + " M_ID:=" + MNum + ",");
                                 // sw.Write("\r\n" + " M_ID_Offset :=" + M_OFFSET + ",");
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
                                 sw.Write("," + "\r\n" + " Address:= " + (M2Num * M_AD_M + M_AD_C));
                                 sw.Write("," + "\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"");
                                 sw.Write("," + "\r\n" + " Sensor:= " + "\"" + "Input" + "\"" + ".M[" + MNum + "]." + M_BQ + "_前到位");
-                                if (KM_Err_Enable == "2")
+                                /*if (KM_Err_Enable == "2")
                                 {
                                     sw.Write("," + "\r\n" + " KM_Err_Enable := " + "\"" + "False" + "\"");
                                 }
                                 else
                                 {
                                     sw.Write("," + "\r\n" + " KM_Err_Enable := " + "\"" + "True" + "\"");
-                                }
+                                }*/
                                 if (M_T_1or2 == "2")
                                 {
                                     sw.Write("," + "\r\n" + " T_Enable := " + "\"" + "False" + "\"");
@@ -2456,7 +2456,7 @@ namespace Excel操作
                                 }
                                 sw.Write("," + "\r\n" + " T_Time := T#" + T_S1 + "S");
                                 sw.Write("," + "\r\n" + " T_Reset := " + "\"" + TIME_RES + "\"");
-                                sw.Write("," + "\r\n" + " KM_Err_Reset := " + "\"" + MOTO_RES + "\"");
+                                sw.Write("," + "\r\n" + " VF_Reset := " + "\"" + MOTO_RES + "\"");
                                 sw.Write("," + "\r\n" + " Job_ID:= " + "\"" + "Info" + "\"" + ".M[" + MNum + "].Work_ID);");
                                 sw.Write("\r\n");
 
@@ -2628,7 +2628,7 @@ namespace Excel操作
                                 sw.Write("," + "\r\n" + " Address:= " + (M2Num * M_AD_M + M_AD_C));
                                 sw.Write("," + "\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"");
                                 sw.Write("," + "\r\n" + " Sensor:= " + "\"" + "Input" + "\"" + ".M[" + M2Num + "]." + M_BQ + "_前到位");
-                                if (KM_Err_Enable == "2")
+                              /*  if (KM_Err_Enable == "2")
                                 {
                                     sw.Write("," + "\r\n" + " KM_Err_Enable := " + "\"" + "False" + "\"");
                                 }
@@ -2636,6 +2636,7 @@ namespace Excel操作
                                 {
                                     sw.Write("," + "\r\n" + " KM_Err_Enable := " + "\"" + "True" + "\"");
                                 }
+                                */
                                 if (M_T_1or2 == "2")
                                 {
                                     sw.Write("," + "\r\n" + " T_Enable := " + "\"" + "False" + "\"");
@@ -2646,7 +2647,7 @@ namespace Excel操作
                                 }
                                 sw.Write("," + "\r\n" + " T_Time := T#" + T_S1 + "S");
                                 sw.Write("," + "\r\n" + " T_Reset := " + "\"" + TIME_RES + "\"");
-                                sw.Write("," + "\r\n" + " KM_Err_Reset := " + "\"" + MOTO_RES + "\"");
+                                sw.Write("," + "\r\n" + " VF_Reset := " + "\"" + MOTO_RES + "\"");
                                 sw.Write("," + "\r\n" + " Job_ID:= " + "\"" + "Info" + "\"" + ".M[" + M2Num + "].Work_ID);");
                                 sw.Write("\r\n");
 
@@ -2780,6 +2781,48 @@ namespace Excel操作
 
                     MRow++;
                 } while (Convert.ToString(ws1.Cells[MRow, 1].Value) != "end" && MRow < 200);
+
+                sw.Write("\r\n" + "// 故障汇总");
+                sw.Write("\r\n" + "IF");
+                MRow = 4;
+                do
+                {
+                    try
+                    {
+
+                        string M_NO = Convert.ToString(ws1.Cells[MRow, 1].Value);
+                        int M_NOTemp = Convert.ToInt16(ws1.Cells[MRow, 1].Value);
+                        if (MRow == 5)
+                        {
+                            if (M_NO != null)
+                            {
+                                sw.Write("\r\n" + "\"" + "STA" + "\"" + ".M[" + M_NO + "].Fault");
+                            }
+                        }
+                        else
+                            {
+                            if (M_NO != null)
+                            {
+                                sw.Write("\r\n" +"OR"+ "\"" + "STA" + "\"" + ".M[" + M_NO + "].Fault");
+                            }
+                        }
+                        
+
+
+
+
+                    }
+                    catch { }
+                    MRow = MRow + 1;
+                }
+                while (Convert.ToString(ws1.Cells[MRow, 1].Value) != "end" && MRow < 200);
+                sw.Write("\r\n" + "Then");
+                sw.Write("\r\n" + "\""+ Fault + "\""+":=1;");
+                sw.Write("\r\n" + "ELSE");
+                sw.Write("\r\n" + "\"" + Fault + "\"" + ":=0;");
+                sw.Write("\r\n" + "END_IF;");
+
+
                 sw.Write("\r\n" + "END_FUNCTION_BLOCK ");
 
 
