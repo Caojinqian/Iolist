@@ -162,7 +162,7 @@ namespace Excel操作
              
                 int offset = Convert.ToInt16(offsetBox.Text);
                 string 片区 = 片区Box.Text;
-                if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("请确定是否总共有123" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     excelEdit.输入输出表(片区,OpNum, offset, FileName.Text,PublicValue.LcpName);
                     excelEdit.Close();
