@@ -1331,7 +1331,7 @@ namespace Excel操作
                 do
                 {
                     MNum = Convert.ToInt16(ws.Cells[MRow, 1].Value);
-                    M_runStype = Convert.ToInt16(ws.Cells[MRow, 27].Value);
+                    M_runStype = Convert.ToInt16(ws.Cells[MRow, 28].Value);
                     M1or2 = Convert.ToInt16(ws.Cells[MRow, 2].Value);
                     M1or2 = Convert.ToInt16(ws.Cells[MRow, 2].Value);
                     M2type = Convert.ToInt16(ws.Cells[MRow, 4].Value);
@@ -2269,6 +2269,7 @@ namespace Excel操作
                 string offset = "0"; //偏移量
                 string M1or2 = "0";    //平面号传递
                 string M2Type = "0";   //设备2类型
+                string bqEnable = "0"; //光电故障是否启用
               //  int ActualmNum = 0;  
                 string saveNmaeText = 片区 + "_status.scl";
                 //清空缓冲区
@@ -2392,7 +2393,8 @@ namespace Excel操作
                         String TIMER2 = Convert.ToString(ws1.Cells[MRow, 18].Value);
                         String T_S2 = Convert.ToString(ws1.Cells[MRow, 19].Value);
                         String KM_Err_Enable = Convert.ToString(ws1.Cells[MRow, 27].Value);
-                        String KM_Err_Timer1 = Convert.ToString(ws1.Cells[MRow, 28].Value);
+                           bqEnable = Convert.ToString(ws1.Cells[MRow, 29].Value);
+                       // String KM_Err_Timer1 = Convert.ToString(ws1.Cells[MRow, 28].Value);
                         String KM_Err_Timer2 = Convert.ToString(ws1.Cells[MRow, 29].Value);
                         String IVALUE1 = Convert.ToString(ws1.Cells[MRow, 30].Value);
                         String IVALUE2 = Convert.ToString(ws1.Cells[MRow, 31].Value);
@@ -2542,6 +2544,15 @@ namespace Excel操作
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);                            
                                 sw.Write("," + "\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" );
                                 sw.Write("," + "\r\n" + " Sensor:= "+ "\"" + "Input" + "\"" + ".M[" + MNum + "]." +M_BQ+"_前到位");
+                                if (bqEnable == "2")
+                                {
+                                    sw.Write("," + "\r\n" + " BQ_Enable := " + "\"" + "False" + "\"");
+                                }
+                                else
+                                {
+                                    sw.Write("," + "\r\n" + " BQ_Enable := " + "\"" + "True" + "\"");
+                                    sw.Write("," + "\r\n" + " BQ_Time := T#" + T_S1 + "S");
+                                }
                                 if (KM_Err_Enable == "2")
                                 {
                                     sw.Write("," + "\r\n" + " KM_Err_Enable := " + "\"" + "False" + "\"");
@@ -2733,7 +2744,18 @@ namespace Excel操作
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
                                 sw.Write("," + "\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"");
                                 sw.Write("," + "\r\n" + " Sensor:= " + "\"" + "Input" + "\"" + ".M[" + M2Num + "]." + M_BQ + "_前到位");
-                                if (KM_Err_Enable == "2")
+
+                                if (bqEnable == "2")
+                                {
+                                    sw.Write("," + "\r\n" + " BQ_Enable := " + "\"" + "False" + "\"");
+                                }
+                                else
+                                {
+                                    sw.Write("," + "\r\n" + " BQ_Enable := " + "\"" + "True" + "\"");
+
+                                    sw.Write("," + "\r\n" + " BQ_Time := T#" + T_S1 + "S");
+                                }
+                                    if (KM_Err_Enable == "2")
                                 {
                                     sw.Write("," + "\r\n" + " KM_Err_Enable := " + "\"" + "False" + "\"");
                                 }
