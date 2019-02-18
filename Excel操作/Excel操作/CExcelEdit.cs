@@ -55,15 +55,24 @@ namespace Excel操作
         }
         public void Open(string FileName)//打开一个Excel文件
         {
-            app = new Excel.Application();
+            try
+            {
+                app = new Excel.Application();
+            app.Visible = true;
             wbs = app.Workbooks;
-
-            wb = wbs.Open(FileName);
+         
+            wb = wbs.Open(FileName); 
+            
             //wb = wbs.Open(FileName, 0, true, 5,"", "", true, Excel.XlPlatform.xlWindows, "t", false, false, 0, true,Type.Missing,Type.Missing);
             //wb = wbs.Open(FileName,Type.Missing,Type.Missing,Type.Missing,Type.Missing,Type.Missing,Type.Missing,Excel.XlPlatform.xlWindows,Type.Missing,Type.Missing,Type.Missing,Type.Missing,Type.Missing,Type.Missing,Type.Missing);
             mFilename = FileName;
             ws = (Excel.Worksheet)wb.ActiveSheet;
-            // ws = (Excel.Worksheet)wb.Worksheets["Sheet1"];
+                // ws = (Excel.Worksheet)wb.Worksheets["Sheet1"];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("没有正常打开" + ex.Message);
+            }
         }
 
         public void Message()

@@ -274,6 +274,11 @@ namespace Excel操作
             {
                 MessageBox.Show("没有找到相应文件或者没有找到Excel文件，请重新查找文件");
             }
+            if (workName == null)
+            {
+                MessageBox.Show("获取子表失败");
+                return;
+            }
             string[] ABC = workName;  
             for (int i = 0; i < ABC.Length; i++)
             {
@@ -305,8 +310,14 @@ namespace Excel操作
             /// <returns>Sheet页名称集合</returns> 
         }
 
+        /// <summary>
+        /// 获取Excel子表
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         private static String[] GetExcelSheetNames(string fileName)
         {
+            String[] excelSheets = null;
             OleDbConnection objConn = null;
             System.Data.DataTable dt = null;
             try
@@ -326,9 +337,10 @@ namespace Excel操作
                 dt = objConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
                 if (dt == null)
                 {
+                    MessageBox.Show("获取数据表为空！");
                     return null;
                 }
-                String[] excelSheets = new String[dt.Rows.Count];
+                excelSheets = new String[dt.Rows.Count];
                 int i = 0;
                 // 加入工作表名称到字符串数组 
                 foreach (DataRow row in dt.Rows)
@@ -341,11 +353,10 @@ namespace Excel操作
                     }
                     i++;
                 }
-                return excelSheets;
             }
             catch (Exception ex)
             {
-                return null;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -360,6 +371,7 @@ namespace Excel操作
                     dt.Dispose();
                 }
             }
+            return excelSheets;
         }
 
         private void label2_Click(object sender, EventArgs e)
