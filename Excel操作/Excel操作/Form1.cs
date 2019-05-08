@@ -488,6 +488,28 @@ namespace Excel操作
         {
 
         }
+
+        private void 手动程序LAD_Click(object sender, EventArgs e)
+        {
+            if (FileName.Text != null && (FileName.Text.Contains(".xlsx") || FileName.Text.Contains(".xls")))
+            {
+                int OpNum = lcpNameLength(PublicValue.LcpName);    //Convert.ToInt16(OPBox.Text);
+                string 片区 = 片区Box.Text;
+                // MessageBox.Show("请确定是否总共有" + OpNum + "组LCP");
+                if (MessageBox.Show("请确定是否总共有" + OpNum + "组LCP", "Confirm Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    excelEdit.ManualLADtest(片区, FileName.Text);
+                    excelEdit.Close();
+                    MessageBox.Show("全部转换成功");
+
+                    //delete
+                }
+            }
+            else
+            {
+                MessageBox.Show("没有找到相应文件或者没有找到Excel文件，请重新查找文件");
+            }
+        }
         #endregion
 
 

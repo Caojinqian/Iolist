@@ -54,6 +54,7 @@ namespace Excel操作
             this.Input = new System.Windows.Forms.Button();
             this.Output = new System.Windows.Forms.Button();
             this.Status = new System.Windows.Forms.Button();
+            this.手动程序LAD = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.myDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -253,7 +254,7 @@ namespace Excel操作
             // 
             // Status
             // 
-            this.Status.Location = new System.Drawing.Point(697, 154);
+            this.Status.Location = new System.Drawing.Point(697, 158);
             this.Status.Name = "Status";
             this.Status.Size = new System.Drawing.Size(106, 42);
             this.Status.TabIndex = 28;
@@ -261,11 +262,22 @@ namespace Excel操作
             this.Status.UseVisualStyleBackColor = true;
             this.Status.Click += new System.EventHandler(this.Status_Click);
             // 
+            // 手动程序LAD
+            // 
+            this.手动程序LAD.Location = new System.Drawing.Point(697, 290);
+            this.手动程序LAD.Name = "手动程序LAD";
+            this.手动程序LAD.Size = new System.Drawing.Size(106, 42);
+            this.手动程序LAD.TabIndex = 29;
+            this.手动程序LAD.Text = "手动程序LAD生成";
+            this.手动程序LAD.UseVisualStyleBackColor = true;
+            this.手动程序LAD.Click += new System.EventHandler(this.手动程序LAD_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 406);
+            this.Controls.Add(this.手动程序LAD);
             this.Controls.Add(this.Status);
             this.Controls.Add(this.Output);
             this.Controls.Add(this.Input);
@@ -322,6 +334,7 @@ namespace Excel操作
         private System.Windows.Forms.Button Input;
         private System.Windows.Forms.Button Output;
         private System.Windows.Forms.Button Status;
+        private System.Windows.Forms.Button 手动程序LAD;
     }
 }
 

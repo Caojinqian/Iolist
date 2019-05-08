@@ -2873,6 +2873,2404 @@ namespace Excel操作
             }
         }
 
+        public void ManualLAD(string 片区, string FileName)//打开读，失败 FileName 为打开的Excel
+        {
+            Open(FileName);
+            if (FileName.Contains("电机"))
+            {
+                int MNum = 0;
+                int M_runStype = 0;
+                int MRow = 5;
+                int offset = 0;
+                int M1or2 = 0;
+                int M2type = 0;
+                int ActualmNum = 0;
+                string dpm = "\"";//  double quotation marks
+                string space = " ";
+                string saveNmaeText = 片区 + "_Manual.xml";
+                int ID = 0;
+                txtname = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, saveNmaeText);
+                FileStream fs = new FileStream(txtname, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+                //开始写入
+                sw.Write("<?xml version=" +"\""+ "1.0"+"\""+" encoding ="+dpm+"utf-8"+dpm+"?>");
+                sw.Write("\r\n" + @"<Document>");
+                sw.Write("\r\n" + @"<Engineering version="+dpm+"V14 SP1"+dpm+" />");
+                sw.Write("\r\n" + @"<DocumentInfo>");
+                sw.Write("\r\n" + @"<Created>2019-05-05T01:25:32.2796908Z</Created>");
+                sw.Write("\r\n" + @"<ExportSetting>WithDefaults, WithReadOnly</ExportSetting>");
+                sw.Write("\r\n" + @"<InstalledProducts>");
+                sw.Write("\r\n" + @"<Product>");
+                sw.Write("\r\n" + @"<DisplayName>Totally Integrated Automation Portal</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1 Update 3</DisplayVersion>");
+                sw.Write("\r\n" + @"</Product>");
+                sw.Write("\r\n" + @"<OptionPackage>");
+                sw.Write("\r\n" + @" <DisplayName>TIA Portal Openness</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1</DisplayVersion>");
+                sw.Write("\r\n" + @" </OptionPackage>");
+                sw.Write("\r\n" + @"<Product>");
+                sw.Write("\r\n" + @"<DisplayName>STEP 7 Professional</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1 Update 3</DisplayVersion>");
+                sw.Write("\r\n" + @"</Product>");
+                sw.Write("\r\n" + @"<Product>");
+                sw.Write("\r\n" + @"<DisplayName>WinCC Professional</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1 Update 3</DisplayVersion>");
+                sw.Write("\r\n" + @"</Product>");
+                sw.Write("\r\n" + @"<OptionPackage>");
+                sw.Write("\r\n" + @" <DisplayName>SIMATIC Visualization Architect</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1 Update 3</DisplayVersion>");
+                sw.Write("\r\n" + @" </OptionPackage>");
+                sw.Write("\r\n" + @" </InstalledProducts>");
+                sw.Write("\r\n" + @" </DocumentInfo>");
+                sw.Write("\r\n" + @"<SW.Blocks.FC ID="+dpm+"0"+dpm+">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @" <AutoNumber>true</AutoNumber>");
+                sw.Write("\r\n" + @"<CodeModifiedDate ReadOnly="+dpm+"true"+dpm+ ">2019-05-05T01:22:26.6160715Z</CodeModifiedDate>");
+                sw.Write("\r\n" + @"<CompileDate ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T01:25:20.5200182Z</CompileDate>");
+                sw.Write("\r\n" + @" <CreationDate ReadOnly=" + dpm + "true" + dpm + ">2019-05-05T00:47:44.4109762Z</CreationDate>");
+                sw.Write("\r\n" + @" <HandleErrorsWithinBlock ReadOnly=" + dpm + "true" + dpm + ">false</HandleErrorsWithinBlock>");
+                sw.Write("\r\n" + @" <HeaderAuthor />");
+                sw.Write("\r\n" + @" <HeaderFamily />");
+                sw.Write("\r\n" + @" <HeaderName />");
+                sw.Write("\r\n" + @" <HeaderVersion>0.1</HeaderVersion>");
+                sw.Write("\r\n" + @"<Interface><Sections xmlns=" + dpm + "http://www.siemens.com/automation/Openness/SW/Interface/v2" + dpm + ">");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Input" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Output" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "InOut" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Temp" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Constant" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Return" + dpm + ">");
+                sw.Write("\r\n" + @"<Member Name=" + dpm + "Ret_Val" + dpm + " Datatype="+dpm+ "Void" + dpm+ " Accessibility=" + dpm+ "Public" + dpm+"/>");            
+                sw.Write("\r\n" + @"</Section>");
+                sw.Write("\r\n" + @"</Sections></Interface>");
+                sw.Write("\r\n" + @"<InterfaceModifiedDate ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T00:47:44.4109762Z</InterfaceModifiedDate>");
+                sw.Write("\r\n" + @"<IsConsistent ReadOnly=" + dpm + "true" + dpm + @">true</IsConsistent>");
+                sw.Write("\r\n" + @"<IsIECCheckEnabled>false</IsIECCheckEnabled>");
+                sw.Write("\r\n" + @"<IsKnowHowProtected ReadOnly=" + dpm + "true" + dpm + @">false</IsKnowHowProtected>");
+                sw.Write("\r\n" + @"<IsWriteProtected ReadOnly=" + dpm + "true" + dpm + @">false</IsWriteProtected>");
+                sw.Write("\r\n" + @"<LibraryConformanceStatus ReadOnly=" + dpm + "true" + dpm + @">警告： 该对象包含对全局数据块的访问。");
+                sw.Write("\r\n" + @"</LibraryConformanceStatus> ");
+                sw.Write("\r\n" + @"<MemoryLayout>Optimized</MemoryLayout>");
+                sw.Write("\r\n" + @"<ModifiedDate ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T01:22:26.6160715Z</ModifiedDate>");              
+                sw.Write("\r\n" + @"<Name>123</Name>"); //程序的名字
+                sw.Write("\r\n" + @" <Number>1</Number>");//程序的编号
+                sw.Write("\r\n" + @"<ParameterModified ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T00:47:44.4109762Z</ParameterModified>");
+                sw.Write("\r\n" + @"<ProgrammingLanguage>LAD</ProgrammingLanguage>");
+                sw.Write("\r\n" + @"<StructureModified ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T00:47:44.4109762Z</StructureModified>");
+                sw.Write("\r\n" + @" <UDABlockProperties />");
+                sw.Write("\r\n" + @"<UDAEnableTagReadback>false</UDAEnableTagReadback>");
+                sw.Write("\r\n" + @" </AttributeList>");
+                sw.Write("\r\n" + @" <ObjectList>");  //程序段的定义
+                sw.Write("\r\n" + @"<MultilingualText ID=" + dpm + "1" + dpm + @" CompositionName="+dpm+ "Comment" + dpm +@">");
+                sw.Write("\r\n" + @" <ObjectList>");
+                sw.Write("\r\n" + @"<MultilingualTextItem ID=" + dpm + "2" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @" <AttributeList>");
+                sw.Write("\r\n" + @" <Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"  <Text />");
+                sw.Write("\r\n" + @" </AttributeList>");
+                sw.Write("\r\n" + @"  </MultilingualTextItem>");
+                sw.Write("\r\n" + @"  </ObjectList>");
+                sw.Write("\r\n" + @" </MultilingualText>");
+                sw.Write("\r\n" + @"<SW.Blocks.CompileUnit ID=" + dpm + "3" + dpm + @" CompositionName=" + dpm + "CompileUnits" + dpm + @">"); //程序段
+                sw.Write("\r\n" + @" <AttributeList>");
+                sw.Write("\r\n" + @"<NetworkSource><FlgNet xmlns=" + dpm + "http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v1" + dpm + ">");
+                sw.Write("\r\n" + @"<Parts>");   //当前程序段符号定义 每一个程序段内的UID不能重复 
+                sw.Write("\r\n" + @"<Access Scope="+dpm+"GlobalVariable"+dpm+ " UId=" + dpm+"21"+dpm+@">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>"); 
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Input" + dpm +@"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" +dpm+ @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>"+"101"+"</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" +dpm+ " Informative=" + dpm+ "true" + dpm+ @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "BQ1" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type="+ dpm +"Bool"+ dpm + " BlockNumber=" + dpm+"11"+dpm+ " BitOffset=" + dpm+"41" +dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "TypedConstant" + dpm + " UId=" + dpm + "22" + dpm + @">"); //定义符号的uid 时间变量ton
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantValue>T#2s</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Time</StringAttribute>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "FormatFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">TypeQualifier</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");          
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "23" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>"+"101"+"</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Fault" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "24" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "24" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "INFO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Work_ID" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "DInt" + dpm + " BlockNumber=" + dpm + "8" + dpm + " BitOffset=" + dpm + "160" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");   
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "25" + dpm+@">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "0" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "26" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ready" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "17" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "27" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Fault" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "24" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "28" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "INFO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Work_ID" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "DInt" + dpm + " BlockNumber=" + dpm + "8" + dpm + " BitOffset=" + dpm + "160" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "29" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "0" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "30" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ask_F" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "18" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");              
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" +dpm+ "31" + dpm+ @">"); //闭点线圈  //程线圈程序定义
+                sw.Write("\r\n" + @"<Negated Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "TOF" + dpm + " Version=" + dpm+"1.0"+dpm+" UId=" + dpm + "32" + dpm + @">"); //时间
+                sw.Write("\r\n" + @"<Instance UId=" + dpm + "33" + dpm + " Scope=" + dpm + "GlobalVariable" + dpm + @">"); //
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "DB2T" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "T" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "None" + dpm + " BlockNumber=" + dpm + "2" + dpm + " BitOffset=" + dpm + "12960" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Instance>");
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "time_type" + dpm + " Type=" + dpm + "Type" + dpm + @">Time</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "34" + dpm + @">"); //闭点线圈
+                sw.Write("\r\n" + @"<Negated Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Part>");           
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Eq" + dpm + " UId=" + dpm + "35" + dpm + @">"); //等于
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "SrcType" + dpm + " Type=" + dpm + "Type" + dpm + @">DInt</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Coil" + dpm + " UId=" + dpm + "36" + dpm + @"/>"); //输出线圈
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "37" + dpm + @">"); //闭点线圈
+                sw.Write("\r\n" + @"<Negated Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Ne" + dpm + " UId=" + dpm + "38" + dpm + @">"); //不等于
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "SrcType" + dpm + " Type=" + dpm + "Type" + dpm + @">DInt</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Coil" + dpm + " UId=" + dpm + "39" + dpm + @"/>"); //输出线圈
+                sw.Write("\r\n" + @"</Parts>");
+                sw.Write("\r\n" + @"<Wires>");
+                sw.Write("\r\n" + @"<Wire UId="+dpm+ "41" + dpm+@">");
+                sw.Write("\r\n" + @"<Powerrail />");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "31" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "37" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "42" + dpm+@">");             
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "21" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "31" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");  
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "43" + dpm+@">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "31" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "32" + dpm + @" Name=" + dpm + "IN" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "44" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "22" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "32" + dpm + @" Name=" + dpm + "PT" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "45" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "32" + dpm + @" Name=" + dpm + "Q" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "34" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "46" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "32" + dpm + @" Name=" + dpm + "ET" + dpm + @"/>");
+                sw.Write("\r\n" + @"<OpenCon UId=" + dpm + "40" + dpm +@"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "47" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "23" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "34" + dpm + @" Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "48" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "34" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "35" + dpm + @" Name=" + dpm + "pre" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "49" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "24" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "35" + dpm + @" Name=" + dpm + "in1" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "50" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "25" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "35" + dpm + @" Name=" + dpm + "in2" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "51" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "35" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "36" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "52" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "26" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "36" + dpm + @" Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "53" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "27" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "37" + dpm + @" Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "54" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "37" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "38" + dpm + @" Name=" + dpm + "pre" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "55" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "28" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "38" + dpm + @" Name=" + dpm + "in1" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "56" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "29" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "38" + dpm + @" Name=" + dpm + "in2" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "57" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "38" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "39" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "58" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "30" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "39" + dpm + @" Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"</Wires>");
+                sw.Write("\r\n" + @"</FlgNet></NetworkSource>");
+                sw.Write("\r\n" + @"<ProgrammingLanguage>LAD</ProgrammingLanguage>");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @"<MultilingualText ID=" + dpm+"4"+dpm + @" CompositionName=" + dpm + "Comment" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem ID=" + dpm + "5" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @"<Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text />");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @" </ObjectList>");
+                sw.Write("\r\n" + @" </MultilingualText>");
+                sw.Write("\r\n" + @" <MultilingualText ID="+dpm+"6"+dpm+ @" CompositionName="+dpm+ "Title" + dpm+@">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem  ID=" + dpm + "7" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @" <Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text>"+"Ready101"+"</Text>");//程序注释内容
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</MultilingualText>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</SW.Blocks.CompileUnit>");
+
+                sw.Write("\r\n" + @"<SW.Blocks.CompileUnit ID=" + dpm + "8" + dpm + @" CompositionName=" + dpm + "CompileUnits" + dpm + @">"); //程序段
+                sw.Write("\r\n" + @" <AttributeList>");
+                sw.Write("\r\n" + @"<NetworkSource><FlgNet xmlns=" + dpm + "http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v1" + dpm + ">");
+                sw.Write("\r\n" + @"<Parts>");   //当前程序段符号定义 每一个程序段内的UID不能重复 
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "21" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "104" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ask_F" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "66" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "22" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ready" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "17" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "23" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ask_F" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "18" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "24" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ready" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "33" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "25" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Frunning" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "47" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "26" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Frunning" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "31" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "27" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Input" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "BQ1" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "11" + dpm + " BitOffset=" + dpm + "73" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "28" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Input" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "BQ1" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "11" + dpm + " BitOffset=" + dpm + "41" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "29" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "INFO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Work_ID" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "DInt" + dpm + " BlockNumber=" + dpm + "8" + dpm + " BitOffset=" + dpm + "320" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "30" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "0" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "31" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "INFO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Work_ID" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "DInt" + dpm + " BlockNumber=" + dpm + "8" + dpm + " BitOffset=" + dpm + "160" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "32" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "0" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "33" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>Int</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "34" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>Int</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "35" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>Int</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "100" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "36" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Part1_Ready" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm +  " BitOffset=" + dpm + "424" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "37" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Fault" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "24" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "38" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "OP01_AUTO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "560" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "39" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "FALSE" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "11" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "40" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Input" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "QS" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "11" + dpm + " BitOffset=" + dpm + "32" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "41" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "TRUE" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "10" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "42" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "TRUE" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "10" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "43" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "OP01_FW" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "561" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "44" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "OP01_BW" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "562" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "45" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Selected" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "29" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "46" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Output" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "PL2" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "12" + dpm + " BitOffset=" + dpm + "20" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "47" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Output" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "PL3" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "12" + dpm + " BitOffset=" + dpm + "21" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "48" + dpm + @" />"); //线圈定义
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "49" + dpm + @" />"); //线圈定义
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "50" + dpm + @" />"); //线圈定义
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "51" + dpm + @" />"); //线圈定义
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "O" + dpm + " UId=" + dpm + "52" + dpm + @">"); //
+                sw.Write("\r\n" + @"<TemplateValue Name=" + dpm + "Card" + dpm + " Type=" + dpm + "Cardinality" + dpm + @">2</TemplateValue>"); //
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "53" + dpm + @" />");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "54" + dpm + @" />");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "55" + dpm + @" />");                         
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "56" + dpm + @">"); //闭点线圈  //程线圈程序定义
+                sw.Write("\r\n" + @"<Negated Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Ne" + dpm + " UId=" + dpm + "57" + dpm + @">"); //不等于
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "SrcType" + dpm + " Type=" + dpm + "Type" + dpm + @">DInt</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Eq" + dpm + " UId=" + dpm + "58" + dpm + @">"); //等于
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "SrcType" + dpm + " Type=" + dpm + "Type" + dpm + @">DInt</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Call UId="+dpm+"59"+dpm+@">");
+                sw.Write("\r\n" + @"<CallInfo Name=" + dpm + "#YF#MotorStandard" + dpm+ " BlockType=" + dpm+"FC"+dpm+ @">");
+                sw.Write("\r\n" + @"<IntegerAttribute Name=" + dpm + "BlockNumber" + dpm + " Informative=" + dpm + "true" + dpm + @">1220</IntegerAttribute>");
+                sw.Write("\r\n" + @"<DateAttribute Name=" + dpm + "ParameterModifiedTS" + dpm + " Informative=" + dpm + "true" + dpm + @">2018-04-08T05:08:14</DateAttribute>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_ID" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm+ "Int" + dpm +@">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_Next_ID" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Int" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_ID_Offset" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Int" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "Part_Ready" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_Fault" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");           
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "OP_Mode" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "FW_Autorun_Factor" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "BW_Autorun_Factor" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_QS" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "FW_Manualrun_Factor" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "BW_Manualrun_Factor" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "FW_Manual_Button" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "BW_Manual_Button" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_Select" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "Transfer_Enable" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "FW_Dis" + dpm + " Section=" + dpm + "Output" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "BW_Dis" + dpm + " Section=" + dpm + "Output" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"</CallInfo>");
+                sw.Write("\r\n" + @"</Call>");
+                sw.Write("\r\n" + @"</Parts>");                
+                sw.Write("\r\n" + @"<Wires>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "60" + dpm + @">");
+                sw.Write("\r\n" + @"<Powerrail />");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "en" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "48" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "50" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "53" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "61 "+ dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "21" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "48" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "62" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "48" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "49" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "63 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "22" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "49" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "64" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "49" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "52" + dpm + @" Name=" + dpm + "in1" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "65 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "23" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "50" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "66" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "50" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "51" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "67 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "24" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "51" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "68" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "51" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "52" + dpm + @" Name=" + dpm + "in2" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "69" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "52" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "FW_Autorun_Factor" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "70 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "25" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "53" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "71" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "53" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "54" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "72 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "26" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "54" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "73" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "54" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "55" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "74 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "27" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "55" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "75" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "55" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "56" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "76 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "28" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "56" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "77" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "56" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "57" + dpm + @" Name=" + dpm + "pre" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "78 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "29" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "57" + dpm + @" Name=" + dpm + "in1" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "79 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "30" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "57" + dpm + @" Name=" + dpm + "in2" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "80" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "57" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "58" + dpm + @" Name=" + dpm + "pre" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "81 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "31" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "58" + dpm + @" Name=" + dpm + "in1" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "82 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "32" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "58" + dpm + @" Name=" + dpm + "in2" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "83" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "58" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "Transfer_Enable" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "84 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "33" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_ID" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "85 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "34" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_Next_ID" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "86 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "35" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_ID_Offset" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "87 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "36" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "Part_Ready" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "88 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "37" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_Fault" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "89 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "38" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "OP_Mode" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "90 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "39" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "BW_Autorun_Factor" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "91 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "40" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_QS" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "92 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "41" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "FW_Manualrun_Factor" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "93 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "42" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "BW_Manualrun_Factor" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "94 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "43" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "FW_Manual_Button" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "95 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "44" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "BW_Manual_Button" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "96 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "45" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_Select" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "97 " + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "FW_Dis" + dpm + @" />");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "46" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "98 " + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "BW_Dis" + dpm + @" />");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "47" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"</Wires>");
+                sw.Write("\r\n" + @"</FlgNet></NetworkSource>");
+                sw.Write("\r\n" + @"<ProgrammingLanguage>LAD</ProgrammingLanguage>");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @"<MultilingualText ID=" + dpm + "9" + dpm + @" CompositionName=" + dpm + "Comment" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem ID=" + dpm + "A" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @"<Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text />");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @" </ObjectList>");
+                sw.Write("\r\n" + @" </MultilingualText>");
+                sw.Write("\r\n" + @" <MultilingualText ID=" + dpm + "B" + dpm + @" CompositionName=" + dpm + "Title" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem  ID=" + dpm + "C" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @" <Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text>" + "Run101" + "</Text>");//程序注释内容
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</MultilingualText>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</SW.Blocks.CompileUnit>");
+                sw.Write("\r\n" + @" <MultilingualText ID=" + dpm + "100" + dpm + @" CompositionName=" + dpm + "Title" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem ID=" + dpm + "101" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @" <Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text />");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</MultilingualText>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</SW.Blocks.FC>");
+                sw.Write("\r\n" + @"</Document>");
+           
+
+
+
+
+
+
+
+
+
+
+
+                //清空缓冲区
+
+                //  int InoutQs = 5 ;
+
+                ws = (Excel.Worksheet)wb.Worksheets[片区];
+                //  ws1 = (Excel.Worksheet)wb.Worksheets["PLC Tags"];
+
+                //初始化表格
+                string AUTO = ws.Cells[4, 2].Value;
+
+                string FAULT_ACK = ws.Cells[4, 3].Value;
+                string MOTO_RES = ws.Cells[4, 4].Value;
+                string PART_READY = ws.Cells[4, 5].Value;
+                string Manual_FW = ws.Cells[4, 6].Value;
+                string Manual_BW = ws.Cells[4, 7].Value;
+                string TIME_RES = ws.Cells[4, 8].Value;
+                string Fault = ws.Cells[4, 9].Value;
+         /*   do
+                {
+                    MNum = Convert.ToInt16(ws.Cells[MRow, 1].Value);
+                    M_runStype = Convert.ToInt16(ws.Cells[MRow, 28].Value);
+                    M1or2 = Convert.ToInt16(ws.Cells[MRow, 2].Value);
+                    M1or2 = Convert.ToInt16(ws.Cells[MRow, 2].Value);
+                    M2type = Convert.ToInt16(ws.Cells[MRow, 4].Value);
+                    offset = Convert.ToInt16(ws.Cells[MRow, 5].Value);
+
+                    if (M1or2 == 1)
+                    {
+                        if (M_runStype == 1)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorStandard" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                            //sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            // sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                            sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+
+                        }
+                        else if (M_runStype == 2)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorOne_way" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " UP_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " DN_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                            //sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            //sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            sw.Write("\r\n" + " UP_Manual_Button:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " DN_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ");");
+
+                        }
+                        else if (M_runStype == 3)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorStandard_UPDN" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                            // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + Manual_BW + ",");
+                            //  sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                            // sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                            sw.Write("\r\n" + " PRX1A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ1_高位" + ",");
+                            sw.Write("\r\n" + " PRX2A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ2_低位" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ","); sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+
+                        }
+                        MRow++;
+                    }
+                    else if (M1or2 == 2 || M1or2 == 3 || M1or2 == 4 || M1or2 == 5 || M1or2 == 6)
+                    {
+                        if (M_runStype == 1)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorStandard" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                            //sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            // sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                            sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+
+                        }
+                        else if (M_runStype == 2)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorOne_way" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " UP_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " DN_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                            //sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            //sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            sw.Write("\r\n" + " UP_Manual_Button:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " DN_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ");");
+
+
+                        }
+                        else if (M_runStype == 3)
+                        {
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + "\"" + "#YF#MotorStandard_UPDN" + "\"" + "(M_ID:=" + MNum + ",");
+                            //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                            sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                            sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                            sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                            sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                            sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                            sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                            //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                            // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + Manual_FW + ",");
+                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + Manual_BW + ",");
+                            //  sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                            // sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                            sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                            sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                            sw.Write("\r\n" + " PRX1A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ1_高位" + ",");
+                            sw.Write("\r\n" + " PRX2A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ2_低位" + ",");
+                            sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                            sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+                        }
+                        MRow++;
+                    }
+
+
+                } while (Convert.ToString(ws.Cells[MRow, 1].Value) != "end" && MRow < 200);
+                */
+               // sw.Write("\r\n" + "END_FUNCTION ");
+
+
+                //Save(); 
+
+                sw.Flush();
+                //关闭流
+                sw.Close();
+                fs.Close();
+
+                //SaveAs(fileSympolPath);
+                // wb.Close(FileName);
+
+                //Close();
+            }
+
+            else
+            {
+                MessageBox.Show("请选择打开电机数据表");
+            }
+        }
+
+        public void ManualLADtest(string 片区, string FileName)//打开读，失败 FileName 为打开的Excel
+        {
+            Open(FileName);
+            if (FileName.Contains("电机"))
+            {
+                int MNum = 0;
+                int M_runStype = 0;
+                int MRow = 5;
+                int offset = 0;
+                int M1or2 = 0;
+                int M2type = 0;
+                int ActualmNum = 0;
+                string dpm = "\"";//  double quotation marks
+                string space = " ";
+                string saveNmaeText = 片区 + "_Manual.xml";
+                int ID = 0;
+                txtname = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, saveNmaeText);
+                FileStream fs = new FileStream(txtname, FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+                //开始写入
+                sw.Write("<?xml version=" + "\"" + "1.0" + "\"" + " encoding =" + dpm + "utf-8" + dpm + "?>");
+                sw.Write("\r\n" + @"<Document>");
+                sw.Write("\r\n" + @"<Engineering version=" + dpm + "V14 SP1" + dpm + " />");
+                sw.Write("\r\n" + @"<DocumentInfo>");
+                sw.Write("\r\n" + @"<Created>2019-05-05T01:25:32.2796908Z</Created>");
+                sw.Write("\r\n" + @"<ExportSetting>WithDefaults, WithReadOnly</ExportSetting>");
+                sw.Write("\r\n" + @"<InstalledProducts>");
+                sw.Write("\r\n" + @"<Product>");
+                sw.Write("\r\n" + @"<DisplayName>Totally Integrated Automation Portal</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1 Update 3</DisplayVersion>");
+                sw.Write("\r\n" + @"</Product>");
+                sw.Write("\r\n" + @"<OptionPackage>");
+                sw.Write("\r\n" + @" <DisplayName>TIA Portal Openness</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1</DisplayVersion>");
+                sw.Write("\r\n" + @" </OptionPackage>");
+                sw.Write("\r\n" + @"<Product>");
+                sw.Write("\r\n" + @"<DisplayName>STEP 7 Professional</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1 Update 3</DisplayVersion>");
+                sw.Write("\r\n" + @"</Product>");
+                sw.Write("\r\n" + @"<Product>");
+                sw.Write("\r\n" + @"<DisplayName>WinCC Professional</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1 Update 3</DisplayVersion>");
+                sw.Write("\r\n" + @"</Product>");
+                sw.Write("\r\n" + @"<OptionPackage>");
+                sw.Write("\r\n" + @" <DisplayName>SIMATIC Visualization Architect</DisplayName>");
+                sw.Write("\r\n" + @"<DisplayVersion>V14 SP1 Update 3</DisplayVersion>");
+                sw.Write("\r\n" + @" </OptionPackage>");
+                sw.Write("\r\n" + @" </InstalledProducts>");
+                sw.Write("\r\n" + @" </DocumentInfo>");
+                sw.Write("\r\n" + @"<SW.Blocks.FC ID=" + dpm + "0" + dpm + ">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @" <AutoNumber>true</AutoNumber>");
+                sw.Write("\r\n" + @"<CodeModifiedDate ReadOnly=" + dpm + "true" + dpm + ">2019-05-05T01:22:26.6160715Z</CodeModifiedDate>");
+                sw.Write("\r\n" + @"<CompileDate ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T01:25:20.5200182Z</CompileDate>");
+                sw.Write("\r\n" + @" <CreationDate ReadOnly=" + dpm + "true" + dpm + ">2019-05-05T00:47:44.4109762Z</CreationDate>");
+                sw.Write("\r\n" + @" <HandleErrorsWithinBlock ReadOnly=" + dpm + "true" + dpm + ">false</HandleErrorsWithinBlock>");
+                sw.Write("\r\n" + @" <HeaderAuthor />");
+                sw.Write("\r\n" + @" <HeaderFamily />");
+                sw.Write("\r\n" + @" <HeaderName />");
+                sw.Write("\r\n" + @" <HeaderVersion>0.1</HeaderVersion>");
+                sw.Write("\r\n" + @"<Interface><Sections xmlns=" + dpm + "http://www.siemens.com/automation/Openness/SW/Interface/v2" + dpm + ">");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Input" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Output" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "InOut" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Temp" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Constant" + dpm + "/>");
+                sw.Write("\r\n" + @"<Section Name=" + dpm + "Return" + dpm + ">");
+                sw.Write("\r\n" + @"<Member Name=" + dpm + "Ret_Val" + dpm + " Datatype=" + dpm + "Void" + dpm + " Accessibility=" + dpm + "Public" + dpm + "/>");
+                sw.Write("\r\n" + @"</Section>");
+                sw.Write("\r\n" + @"</Sections></Interface>");
+                sw.Write("\r\n" + @"<InterfaceModifiedDate ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T00:47:44.4109762Z</InterfaceModifiedDate>");
+                sw.Write("\r\n" + @"<IsConsistent ReadOnly=" + dpm + "true" + dpm + @">true</IsConsistent>");
+                sw.Write("\r\n" + @"<IsIECCheckEnabled>false</IsIECCheckEnabled>");
+                sw.Write("\r\n" + @"<IsKnowHowProtected ReadOnly=" + dpm + "true" + dpm + @">false</IsKnowHowProtected>");
+                sw.Write("\r\n" + @"<IsWriteProtected ReadOnly=" + dpm + "true" + dpm + @">false</IsWriteProtected>");
+                sw.Write("\r\n" + @"<LibraryConformanceStatus ReadOnly=" + dpm + "true" + dpm + @">警告： 该对象包含对全局数据块的访问。");
+                sw.Write("\r\n" + @"</LibraryConformanceStatus> ");
+                sw.Write("\r\n" + @"<MemoryLayout>Optimized</MemoryLayout>");
+                sw.Write("\r\n" + @"<ModifiedDate ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T01:22:26.6160715Z</ModifiedDate>");
+                sw.Write("\r\n" + @"<Name>123</Name>"); //程序的名字
+                sw.Write("\r\n" + @" <Number>1</Number>");//程序的编号
+                sw.Write("\r\n" + @"<ParameterModified ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T00:47:44.4109762Z</ParameterModified>");
+                sw.Write("\r\n" + @"<ProgrammingLanguage>LAD</ProgrammingLanguage>");
+                sw.Write("\r\n" + @"<StructureModified ReadOnly=" + dpm + "true" + dpm + @">2019-05-05T00:47:44.4109762Z</StructureModified>");
+                sw.Write("\r\n" + @" <UDABlockProperties />");
+                sw.Write("\r\n" + @"<UDAEnableTagReadback>false</UDAEnableTagReadback>");
+                sw.Write("\r\n" + @" </AttributeList>");
+                sw.Write("\r\n" + @" <ObjectList>");  //程序段的定义
+                sw.Write("\r\n" + @"<MultilingualText ID=" + dpm + "1" + dpm + @" CompositionName=" + dpm + "Comment" + dpm + @">");
+                sw.Write("\r\n" + @" <ObjectList>");
+                sw.Write("\r\n" + @"<MultilingualTextItem ID=" + dpm + "2" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @" <AttributeList>");
+                sw.Write("\r\n" + @" <Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"  <Text />");
+                sw.Write("\r\n" + @" </AttributeList>");
+                sw.Write("\r\n" + @"  </MultilingualTextItem>");
+                sw.Write("\r\n" + @"  </ObjectList>");
+                sw.Write("\r\n" + @" </MultilingualText>");
+
+                ID = 2;
+
+                ClassXML classXml = new ClassXML();
+                classXml.ready(sw, MNum, ID);
+
+                /*sw.Write("\r\n" + @"<SW.Blocks.CompileUnit ID=" + dpm + "3" + dpm + @" CompositionName=" + dpm + "CompileUnits" + dpm + @">"); //程序段
+                sw.Write("\r\n" + @" <AttributeList>");
+                sw.Write("\r\n" + @"<NetworkSource><FlgNet xmlns=" + dpm + "http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v1" + dpm + ">");
+                sw.Write("\r\n" + @"<Parts>");   //当前程序段符号定义 每一个程序段内的UID不能重复 
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "21" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Input" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "BQ1" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "11" + dpm + " BitOffset=" + dpm + "41" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "TypedConstant" + dpm + " UId=" + dpm + "22" + dpm + @">"); //定义符号的uid 时间变量ton
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantValue>T#2s</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Time</StringAttribute>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "FormatFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">TypeQualifier</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "23" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Fault" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "24" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "24" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "INFO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Work_ID" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "DInt" + dpm + " BlockNumber=" + dpm + "8" + dpm + " BitOffset=" + dpm + "160" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "25" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "0" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "26" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ready" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "17" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "27" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Fault" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "24" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "28" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "INFO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Work_ID" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "DInt" + dpm + " BlockNumber=" + dpm + "8" + dpm + " BitOffset=" + dpm + "160" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "29" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "0" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "30" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ask_F" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "18" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "31" + dpm + @">"); //闭点线圈  //程线圈程序定义
+                sw.Write("\r\n" + @"<Negated Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "TOF" + dpm + " Version=" + dpm + "1.0" + dpm + " UId=" + dpm + "32" + dpm + @">"); //时间
+                sw.Write("\r\n" + @"<Instance UId=" + dpm + "33" + dpm + " Scope=" + dpm + "GlobalVariable" + dpm + @">"); //
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "DB2T" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "T" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "None" + dpm + " BlockNumber=" + dpm + "2" + dpm + " BitOffset=" + dpm + "12960" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Instance>");
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "time_type" + dpm + " Type=" + dpm + "Type" + dpm + @">Time</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "34" + dpm + @">"); //闭点线圈
+                sw.Write("\r\n" + @"<Negated Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Eq" + dpm + " UId=" + dpm + "35" + dpm + @">"); //等于
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "SrcType" + dpm + " Type=" + dpm + "Type" + dpm + @">DInt</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Coil" + dpm + " UId=" + dpm + "36" + dpm + @"/>"); //输出线圈
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "37" + dpm + @">"); //闭点线圈
+                sw.Write("\r\n" + @"<Negated Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Ne" + dpm + " UId=" + dpm + "38" + dpm + @">"); //不等于
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "SrcType" + dpm + " Type=" + dpm + "Type" + dpm + @">DInt</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Coil" + dpm + " UId=" + dpm + "39" + dpm + @"/>"); //输出线圈
+                sw.Write("\r\n" + @"</Parts>");
+                sw.Write("\r\n" + @"<Wires>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "41" + dpm + @">");
+                sw.Write("\r\n" + @"<Powerrail />");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "31" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "37" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "42" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "21" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "31" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "43" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "31" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "32" + dpm + @" Name=" + dpm + "IN" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "44" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "22" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "32" + dpm + @" Name=" + dpm + "PT" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "45" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "32" + dpm + @" Name=" + dpm + "Q" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "34" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "46" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "32" + dpm + @" Name=" + dpm + "ET" + dpm + @"/>");
+                sw.Write("\r\n" + @"<OpenCon UId=" + dpm + "40" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "47" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "23" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "34" + dpm + @" Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "48" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "34" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "35" + dpm + @" Name=" + dpm + "pre" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "49" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "24" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "35" + dpm + @" Name=" + dpm + "in1" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "50" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "25" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "35" + dpm + @" Name=" + dpm + "in2" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "51" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "35" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "36" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "52" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "26" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "36" + dpm + @" Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "53" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "27" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "37" + dpm + @" Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "54" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "37" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "38" + dpm + @" Name=" + dpm + "pre" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "55" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "28" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "38" + dpm + @" Name=" + dpm + "in1" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "56" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "29" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "38" + dpm + @" Name=" + dpm + "in2" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "57" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "38" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "39" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "58" + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "30" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "39" + dpm + @" Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"</Wires>");
+                sw.Write("\r\n" + @"</FlgNet></NetworkSource>");
+                sw.Write("\r\n" + @"<ProgrammingLanguage>LAD</ProgrammingLanguage>");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @"<MultilingualText ID=" + dpm + "4" + dpm + @" CompositionName=" + dpm + "Comment" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem ID=" + dpm + "5" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @"<Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text />");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @" </ObjectList>");
+                sw.Write("\r\n" + @" </MultilingualText>");
+                sw.Write("\r\n" + @" <MultilingualText ID=" + dpm + "6" + dpm + @" CompositionName=" + dpm + "Title" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem  ID=" + dpm + "7" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @" <Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text>" + "Ready101" + "</Text>");//程序注释内容
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</MultilingualText>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</SW.Blocks.CompileUnit>");*/
+
+                sw.Write("\r\n" + @"<SW.Blocks.CompileUnit ID=" + dpm + "8" + dpm + @" CompositionName=" + dpm + "CompileUnits" + dpm + @">"); //程序段
+                sw.Write("\r\n" + @" <AttributeList>");
+                sw.Write("\r\n" + @"<NetworkSource><FlgNet xmlns=" + dpm + "http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v1" + dpm + ">");
+                sw.Write("\r\n" + @"<Parts>");   //当前程序段符号定义 每一个程序段内的UID不能重复 
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "21" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "104" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ask_F" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "66" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "22" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ready" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "17" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "23" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ask_F" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "18" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "24" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Control" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Ready" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "13" + dpm + " BitOffset=" + dpm + "33" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "25" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Frunning" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "47" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "26" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Frunning" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "31" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "27" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Input" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "BQ1" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "11" + dpm + " BitOffset=" + dpm + "73" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "28" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Input" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "BQ1" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "11" + dpm + " BitOffset=" + dpm + "41" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "29" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "INFO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Work_ID" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "DInt" + dpm + " BlockNumber=" + dpm + "8" + dpm + " BitOffset=" + dpm + "320" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "30" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "0" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "31" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "INFO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Work_ID" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "DInt" + dpm + " BlockNumber=" + dpm + "8" + dpm + " BitOffset=" + dpm + "160" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "32" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "0" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "33" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>Int</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "34" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>Int</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "102" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + " UId=" + dpm + "35" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>Int</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "100" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "36" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Part1_Ready" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "424" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "37" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Fault" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "24" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "38" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "OP01_AUTO" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "560" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "39" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "FALSE" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "11" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "40" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Input" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "QS" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "11" + dpm + " BitOffset=" + dpm + "32" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "41" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "TRUE" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "10" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "42" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "TRUE" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "10" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "43" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "OP01_FW" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "561" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "44" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "OP01_BW" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "Memory" + dpm + " Type=" + dpm + "Bool" + dpm + " BitOffset=" + dpm + "562" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "45" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "STA" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Selected" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "4" + dpm + " BitOffset=" + dpm + "29" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "46" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Output" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "PL2" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "12" + dpm + " BitOffset=" + dpm + "20" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "GlobalVariable" + dpm + " UId=" + dpm + "47" + dpm + @">"); //定义符号的uid  全局变量 Input.M[101].BQ1
+                sw.Write("\r\n" + @"<Symbol>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "Output" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "M" + dpm + @">");
+                sw.Write("\r\n" + @"<Access Scope=" + dpm + "LiteralConstant" + dpm + @">");
+                sw.Write("\r\n" + @"<Constant>");
+                sw.Write("\r\n" + @"<ConstantType>DInt</ConstantType>");
+                sw.Write("\r\n" + @"<ConstantValue>" + "101" + "</ConstantValue>");
+                sw.Write("\r\n" + @"<StringAttribute Name=" + dpm + "Format" + dpm + " Informative=" + dpm + "true" + dpm + @">Dec_signed</StringAttribute>");
+                sw.Write("\r\n" + @"</Constant>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"</Component>");
+                sw.Write("\r\n" + @"<Component Name=" + dpm + "PL3" + dpm + @"/>");
+                sw.Write("\r\n" + @"<Address Area=" + dpm + "DB" + dpm + " Type=" + dpm + "Bool" + dpm + " BlockNumber=" + dpm + "12" + dpm + " BitOffset=" + dpm + "21" + dpm + " Informative=" + dpm + "true" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Symbol>");
+                sw.Write("\r\n" + @"</Access>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "48" + dpm + @" />"); //线圈定义
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "49" + dpm + @" />"); //线圈定义
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "50" + dpm + @" />"); //线圈定义
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "51" + dpm + @" />"); //线圈定义
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "O" + dpm + " UId=" + dpm + "52" + dpm + @">"); //
+                sw.Write("\r\n" + @"<TemplateValue Name=" + dpm + "Card" + dpm + " Type=" + dpm + "Cardinality" + dpm + @">2</TemplateValue>"); //
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "53" + dpm + @" />");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "54" + dpm + @" />");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "55" + dpm + @" />");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Contact" + dpm + " UId=" + dpm + "56" + dpm + @">"); //闭点线圈  //程线圈程序定义
+                sw.Write("\r\n" + @"<Negated Name=" + dpm + "operand" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Ne" + dpm + " UId=" + dpm + "57" + dpm + @">"); //不等于
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "SrcType" + dpm + " Type=" + dpm + "Type" + dpm + @">DInt</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Part Name=" + dpm + "Eq" + dpm + " UId=" + dpm + "58" + dpm + @">"); //等于
+                sw.Write("\r\n" + @" <TemplateValue Name=" + dpm + "SrcType" + dpm + " Type=" + dpm + "Type" + dpm + @">DInt</TemplateValue>");
+                sw.Write("\r\n" + @"</Part>");
+                sw.Write("\r\n" + @"<Call UId=" + dpm + "59" + dpm + @">");
+                sw.Write("\r\n" + @"<CallInfo Name=" + dpm + "#YF#MotorStandard" + dpm + " BlockType=" + dpm + "FC" + dpm + @">");
+                sw.Write("\r\n" + @"<IntegerAttribute Name=" + dpm + "BlockNumber" + dpm + " Informative=" + dpm + "true" + dpm + @">1220</IntegerAttribute>");
+                sw.Write("\r\n" + @"<DateAttribute Name=" + dpm + "ParameterModifiedTS" + dpm + " Informative=" + dpm + "true" + dpm + @">2018-04-08T05:08:14</DateAttribute>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_ID" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Int" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_Next_ID" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Int" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_ID_Offset" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Int" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "Part_Ready" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_Fault" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "OP_Mode" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "FW_Autorun_Factor" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "BW_Autorun_Factor" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_QS" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "FW_Manualrun_Factor" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "BW_Manualrun_Factor" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "FW_Manual_Button" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "BW_Manual_Button" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "M_Select" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "Transfer_Enable" + dpm + " Section=" + dpm + "Input" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "FW_Dis" + dpm + " Section=" + dpm + "Output" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"<Parameter Name=" + dpm + "BW_Dis" + dpm + " Section=" + dpm + "Output" + dpm + " Type=" + dpm + "Bool" + dpm + @">");
+                sw.Write("\r\n" + @" <StringAttribute Name=" + dpm + "InterfaceFlags" + dpm + " Informative=" + dpm + "true" + dpm + @">S7_Visible</StringAttribute>");
+                sw.Write("\r\n" + @"</Parameter>");
+                sw.Write("\r\n" + @"</CallInfo>");
+                sw.Write("\r\n" + @"</Call>");
+                sw.Write("\r\n" + @"</Parts>");
+                sw.Write("\r\n" + @"<Wires>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "60" + dpm + @">");
+                sw.Write("\r\n" + @"<Powerrail />");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "en" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "48" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "50" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "53" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "61 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "21" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "48" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "62" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "48" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "49" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "63 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "22" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "49" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "64" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "49" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "52" + dpm + @" Name=" + dpm + "in1" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "65 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "23" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "50" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "66" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "50" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "51" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "67 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "24" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "51" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "68" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "51" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "52" + dpm + @" Name=" + dpm + "in2" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "69" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "52" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "FW_Autorun_Factor" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "70 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "25" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "53" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "71" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "53" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "54" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "72 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "26" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "54" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "73" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "54" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "55" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "74 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "27" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "55" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "75" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "55" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "56" + dpm + @" Name=" + dpm + "in" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "76 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "28" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "56" + dpm + @" Name=" + dpm + "operand" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "77" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "56" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "57" + dpm + @" Name=" + dpm + "pre" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "78 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "29" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "57" + dpm + @" Name=" + dpm + "in1" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "79 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "30" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "57" + dpm + @" Name=" + dpm + "in2" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "80" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "57" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "58" + dpm + @" Name=" + dpm + "pre" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "81 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "31" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "58" + dpm + @" Name=" + dpm + "in1" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "82 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "32" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "58" + dpm + @" Name=" + dpm + "in2" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "83" + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "58" + dpm + @" Name=" + dpm + "out" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "Transfer_Enable" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "84 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "33" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_ID" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "85 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "34" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_Next_ID" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "86 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "35" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_ID_Offset" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "87 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "36" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "Part_Ready" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "88 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "37" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_Fault" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "89 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "38" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "OP_Mode" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "90 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "39" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "BW_Autorun_Factor" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "91 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "40" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_QS" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "92 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "41" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "FW_Manualrun_Factor" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "93 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "42" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "BW_Manualrun_Factor" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "94 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "43" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "FW_Manual_Button" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "95 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "44" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "BW_Manual_Button" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "96 " + dpm + @">");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "45" + dpm + @"/>");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "M_Select" + dpm + @" />");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "97 " + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "FW_Dis" + dpm + @" />");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "46" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"<Wire UId=" + dpm + "98 " + dpm + @">");
+                sw.Write("\r\n" + @"<NameCon UId=" + dpm + "59" + dpm + @" Name=" + dpm + "BW_Dis" + dpm + @" />");
+                sw.Write("\r\n" + @"<IdentCon UId=" + dpm + "47" + dpm + @"/>");
+                sw.Write("\r\n" + @"</Wire>");
+                sw.Write("\r\n" + @"</Wires>");
+                sw.Write("\r\n" + @"</FlgNet></NetworkSource>");
+                sw.Write("\r\n" + @"<ProgrammingLanguage>LAD</ProgrammingLanguage>");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @"<MultilingualText ID=" + dpm + "9" + dpm + @" CompositionName=" + dpm + "Comment" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem ID=" + dpm + "A" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @"<Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text />");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @" </ObjectList>");
+                sw.Write("\r\n" + @" </MultilingualText>");
+                sw.Write("\r\n" + @" <MultilingualText ID=" + dpm + "B" + dpm + @" CompositionName=" + dpm + "Title" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem  ID=" + dpm + "C" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @" <Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text>" + "Run101" + "</Text>");//程序注释内容
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</MultilingualText>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</SW.Blocks.CompileUnit>");
+                sw.Write("\r\n" + @" <MultilingualText ID=" + dpm + "100" + dpm + @" CompositionName=" + dpm + "Title" + dpm + @">");
+                sw.Write("\r\n" + @"<ObjectList>");
+                sw.Write("\r\n" + @" <MultilingualTextItem ID=" + dpm + "101" + dpm + @" CompositionName=" + dpm + "Items" + dpm + @">");
+                sw.Write("\r\n" + @"<AttributeList>");
+                sw.Write("\r\n" + @" <Culture>zh-CN</Culture>");
+                sw.Write("\r\n" + @"<Text />");
+                sw.Write("\r\n" + @"</AttributeList>");
+                sw.Write("\r\n" + @"</MultilingualTextItem>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</MultilingualText>");
+                sw.Write("\r\n" + @"</ObjectList>");
+                sw.Write("\r\n" + @"</SW.Blocks.FC>");
+                sw.Write("\r\n" + @"</Document>");
+
+
+
+
+
+
+
+
+
+
+
+
+                //清空缓冲区
+
+                //  int InoutQs = 5 ;
+
+                ws = (Excel.Worksheet)wb.Worksheets[片区];
+                //  ws1 = (Excel.Worksheet)wb.Worksheets["PLC Tags"];
+
+                //初始化表格
+                string AUTO = ws.Cells[4, 2].Value;
+
+                string FAULT_ACK = ws.Cells[4, 3].Value;
+                string MOTO_RES = ws.Cells[4, 4].Value;
+                string PART_READY = ws.Cells[4, 5].Value;
+                string Manual_FW = ws.Cells[4, 6].Value;
+                string Manual_BW = ws.Cells[4, 7].Value;
+                string TIME_RES = ws.Cells[4, 8].Value;
+                string Fault = ws.Cells[4, 9].Value;
+                /*   do
+                       {
+                           MNum = Convert.ToInt16(ws.Cells[MRow, 1].Value);
+                           M_runStype = Convert.ToInt16(ws.Cells[MRow, 28].Value);
+                           M1or2 = Convert.ToInt16(ws.Cells[MRow, 2].Value);
+                           M1or2 = Convert.ToInt16(ws.Cells[MRow, 2].Value);
+                           M2type = Convert.ToInt16(ws.Cells[MRow, 4].Value);
+                           offset = Convert.ToInt16(ws.Cells[MRow, 5].Value);
+
+                           if (M1or2 == 1)
+                           {
+                               if (M_runStype == 1)
+                               {
+                                   sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                                   sw.Write("\r\n" + "\"" + "#YF#MotorStandard" + "\"" + "(M_ID:=" + MNum + ",");
+                                   //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                                   sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                                   sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                                   sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                                   sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                                   sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                                   sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                                   sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                                   sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                                   //sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                                   // sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                                   sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                                   sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                                   sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                                   sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                                   sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                                   sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+
+                               }
+                               else if (M_runStype == 2)
+                               {
+                                   sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                                   sw.Write("\r\n" + "\"" + "#YF#MotorOne_way" + "\"" + "(M_ID:=" + MNum + ",");
+                                   //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                                   sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                                   sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                                   sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                                   sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                                   sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                                   sw.Write("\r\n" + " UP_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " DN_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                                   sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                                   sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                                   //sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                                   //sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                                   sw.Write("\r\n" + " UP_Manual_Button:=" + Manual_FW + ",");
+                                   sw.Write("\r\n" + " DN_Manual_Button:=" + Manual_BW + ",");
+                                   sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                                   sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ");");
+
+                               }
+                               else if (M_runStype == 3)
+                               {
+                                   sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                                   sw.Write("\r\n" + "\"" + "#YF#MotorStandard_UPDN" + "\"" + "(M_ID:=" + MNum + ",");
+                                   //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                                   sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                                   sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                                   sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                                   sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                                   sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                                   sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                                   sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                                   sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                                   //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                                   // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                                   sw.Write("\r\n" + " FW_Manualrun_Factor:=" + Manual_FW + ",");
+                                   sw.Write("\r\n" + " BW_Manualrun_Factor:=" + Manual_BW + ",");
+                                   //  sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                                   // sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                                   sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                                   sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                                   sw.Write("\r\n" + " PRX1A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ1_高位" + ",");
+                                   sw.Write("\r\n" + " PRX2A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ2_低位" + ",");
+                                   sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ","); sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+
+                               }
+                               MRow++;
+                           }
+                           else if (M1or2 == 2 || M1or2 == 3 || M1or2 == 4 || M1or2 == 5 || M1or2 == 6)
+                           {
+                               if (M_runStype == 1)
+                               {
+                                   sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                                   sw.Write("\r\n" + "\"" + "#YF#MotorStandard" + "\"" + "(M_ID:=" + MNum + ",");
+                                   //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                                   sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                                   sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                                   sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                                   sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                                   sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                                   sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                                   sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                                   sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                                   //sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                                   // sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                                   sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                                   sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                                   sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                                   sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                                   sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                                   sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+
+                               }
+                               else if (M_runStype == 2)
+                               {
+                                   sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                                   sw.Write("\r\n" + "\"" + "#YF#MotorOne_way" + "\"" + "(M_ID:=" + MNum + ",");
+                                   //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                                   sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                                   sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                                   sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                                   sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                                   sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                                   sw.Write("\r\n" + " UP_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " DN_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                                   sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                                   sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                                   //sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                                   //sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                                   sw.Write("\r\n" + " UP_Manual_Button:=" + Manual_FW + ",");
+                                   sw.Write("\r\n" + " DN_Manual_Button:=" + Manual_BW + ",");
+                                   sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                                   sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ");");
+
+
+                               }
+                               else if (M_runStype == 3)
+                               {
+                                   sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                                   sw.Write("\r\n" + "\"" + "#YF#MotorStandard_UPDN" + "\"" + "(M_ID:=" + MNum + ",");
+                                   //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
+                                   sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
+                                   sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
+                                   sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                                   sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
+                                   sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
+                                   sw.Write("\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"" + ",");
+                                   sw.Write("\r\n" + " FW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
+                                   sw.Write("\r\n" + " BW_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
+                                   sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
+                                   //  sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw"+ ",");
+                                   // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw"+ ",");
+                                   sw.Write("\r\n" + " FW_Manualrun_Factor:=" + Manual_FW + ",");
+                                   sw.Write("\r\n" + " BW_Manualrun_Factor:=" + Manual_BW + ",");
+                                   //  sw.Write("\r\n" + " FW_Manual_Button:=" + Manual_FW + ",");
+                                   // sw.Write("\r\n" + " BW_Manual_Button:=" + Manual_BW + ",");
+                                   sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
+                                   sw.Write("\r\n" + " Transfer_Enable:=" + "\"" + "False" + "\"" + ",");
+                                   sw.Write("\r\n" + " PRX1A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ1_高位" + ",");
+                                   sw.Write("\r\n" + " PRX2A:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].SQ2_低位" + ",");
+                                   sw.Write("\r\n" + " FW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL2" + ",");
+                                   sw.Write("\r\n" + " BW_Dis => " + "\"" + "Output" + "\"" + ".M[" + MNum + "].PL3" + ");");
+                               }
+                               MRow++;
+                           }
+
+
+                       } while (Convert.ToString(ws.Cells[MRow, 1].Value) != "end" && MRow < 200);
+                       */
+                // sw.Write("\r\n" + "END_FUNCTION ");
+
+
+                //Save(); 
+
+                sw.Flush();
+                //关闭流
+                sw.Close();
+                fs.Close();
+
+                //SaveAs(fileSympolPath);
+                // wb.Close(FileName);
+
+                //Close();
+            }
+
+            else
+            {
+                MessageBox.Show("请选择打开电机数据表");
+            }
+        }
+
+
+
+
+
+
+
+
+
     }
 }
 
