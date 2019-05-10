@@ -110,9 +110,10 @@ namespace Excel操作
             // PictureBox1
             // 
             this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
-            this.PictureBox1.Location = new System.Drawing.Point(572, 338);
+            this.PictureBox1.Location = new System.Drawing.Point(528, 330);
             this.PictureBox1.Name = "PictureBox1";
-            this.PictureBox1.Size = new System.Drawing.Size(254, 66);
+            this.PictureBox1.Size = new System.Drawing.Size(293, 72);
+            this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox1.TabIndex = 12;
             this.PictureBox1.TabStop = false;
             // 
@@ -123,7 +124,7 @@ namespace Excel操作
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(53, 12);
             this.Label3.TabIndex = 15;
-            this.Label3.Text = "20190213";
+            this.Label3.Text = "20190510";
             // 
             // label4
             // 
@@ -132,7 +133,7 @@ namespace Excel操作
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 12);
             this.label4.TabIndex = 14;
-            this.label4.Text = "电气部出品V1.2 C#";
+            this.label4.Text = "电气部出品V1.3 C#";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // SelectFile
@@ -186,11 +187,11 @@ namespace Excel操作
             // 
             // 手动程序btn
             // 
-            this.手动程序btn.Location = new System.Drawing.Point(697, 222);
+            this.手动程序btn.Location = new System.Drawing.Point(697, 195);
             this.手动程序btn.Name = "手动程序btn";
             this.手动程序btn.Size = new System.Drawing.Size(106, 42);
             this.手动程序btn.TabIndex = 21;
-            this.手动程序btn.Text = "手动程序生成";
+            this.手动程序btn.Text = "手动程序SCL生成";
             this.手动程序btn.UseVisualStyleBackColor = true;
             this.手动程序btn.Click += new System.EventHandler(this.button1_Click_2);
             // 
@@ -234,7 +235,7 @@ namespace Excel操作
             // 
             // Input
             // 
-            this.Input.Location = new System.Drawing.Point(697, 38);
+            this.Input.Location = new System.Drawing.Point(697, 11);
             this.Input.Name = "Input";
             this.Input.Size = new System.Drawing.Size(106, 42);
             this.Input.TabIndex = 26;
@@ -244,7 +245,7 @@ namespace Excel操作
             // 
             // Output
             // 
-            this.Output.Location = new System.Drawing.Point(697, 96);
+            this.Output.Location = new System.Drawing.Point(697, 69);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(106, 42);
             this.Output.TabIndex = 27;
@@ -254,7 +255,7 @@ namespace Excel操作
             // 
             // Status
             // 
-            this.Status.Location = new System.Drawing.Point(697, 158);
+            this.Status.Location = new System.Drawing.Point(697, 131);
             this.Status.Name = "Status";
             this.Status.Size = new System.Drawing.Size(106, 42);
             this.Status.TabIndex = 28;
@@ -264,7 +265,7 @@ namespace Excel操作
             // 
             // 手动程序LAD
             // 
-            this.手动程序LAD.Location = new System.Drawing.Point(697, 290);
+            this.手动程序LAD.Location = new System.Drawing.Point(697, 263);
             this.手动程序LAD.Name = "手动程序LAD";
             this.手动程序LAD.Size = new System.Drawing.Size(106, 42);
             this.手动程序LAD.TabIndex = 29;
@@ -318,7 +319,6 @@ namespace Excel操作
         private System.Windows.Forms.TextBox OPBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        internal System.Windows.Forms.PictureBox PictureBox1;
         internal System.Windows.Forms.Label Label3;
         internal System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button SelectFile;
@@ -335,6 +335,7 @@ namespace Excel操作
         private System.Windows.Forms.Button Output;
         private System.Windows.Forms.Button Status;
         private System.Windows.Forms.Button 手动程序LAD;
+        internal System.Windows.Forms.PictureBox PictureBox1;
     }
 }
 
