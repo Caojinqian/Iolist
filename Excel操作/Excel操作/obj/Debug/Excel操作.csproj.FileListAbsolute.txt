@@ -37,3 +37,12 @@ G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Exc
 G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\音锋电气程序Iolist转换工具V1.0.exe
 G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\音锋电气程序Iolist转换工具V1.0.pdb
 G:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.csprojAssemblyReference.cache
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\bin\Debug\音锋电气程序Iolist转换工具V1.0.exe.config
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\bin\Debug\音锋电气程序Iolist转换工具V1.0.exe
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\bin\Debug\音锋电气程序Iolist转换工具V1.0.pdb
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.Form1.resources
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.Properties.Resources.resources
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.csproj.GenerateResource.cache
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\Excel操作.csproj.CoreCompileInputs.cache
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\音锋电气程序Iolist转换工具V1.0.exe
+E:\新建文件夹\Visual Studio 2017\Projects\电气小程序\Iolist\Iolist\Excel操作\Excel操作\obj\Debug\音锋电气程序Iolist转换工具V1.0.pdb

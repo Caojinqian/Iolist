@@ -1371,7 +1371,7 @@ namespace Excel操作
                             sw.Write("\r\n" + @"///" + MNum + "运行程序");
                             sw.Write("\r\n" + "\"" + "#YF#MotorOne_way" + "\"" + "(M_ID:=" + MNum + ",");
                             //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
-                            sw.Write("\r\n" + " Actual_M_ID :=" + offset + ",");
+                            sw.Write("\r\n" + " Actual_M_ID :=" + mActualNum + ",");
                             sw.Write("\r\n" + " M_ID_Offset :=" + offset + ",");
                             sw.Write("\r\n" + " Part_Ready :=" + PART_READY + ",");
                             sw.Write("\r\n" + " M_Fault:=" + "\"" + "STA" + "\"" + ".M[" + MNum + "].Fault" + ",");
@@ -1379,10 +1379,10 @@ namespace Excel操作
                             sw.Write("\r\n" + " UP_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
                             sw.Write("\r\n" + " DN_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
                             sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
-                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
-                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
-                            //sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
-                            //sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                           // sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                            //sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
                             sw.Write("\r\n" + " UP_Manual_Button:=" + Manual_FW + ",");
                             sw.Write("\r\n" + " DN_Manual_Button:=" + Manual_BW + ",");
                             sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
@@ -1422,7 +1422,7 @@ namespace Excel操作
                     {
                         if (M_runStype == 1)
                         {
-                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序"+"       "+ mNextNum+"."+ (M1or2-1));
                             sw.Write("\r\n" + "\"" + "#YF#MotorStandard" + "\"" + "(M_ID:=" + MNum + ",");
                             //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
                             sw.Write("\r\n" + " M_Next_ID :=" + mNextNum + ",");
@@ -1447,7 +1447,7 @@ namespace Excel操作
                         }
                         else if (M_runStype == 2)
                         {
-                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序" + "       " + mNextNum + "." + (M1or2 - 1));
                             sw.Write("\r\n" + "\"" + "#YF#MotorOne_way" + "\"" + "(M_ID:=" + MNum + ",");
                             //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
                             sw.Write("\r\n" + " Actual_M_ID :=" + mActualNum + ",");
@@ -1458,10 +1458,10 @@ namespace Excel操作
                             sw.Write("\r\n" + " UP_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Fw" + ",");
                             sw.Write("\r\n" + " DN_Autorun_Factor := " + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].A_Factor_Bw" + ",");
                             sw.Write("\r\n" + " M_QS:=" + "\"" + "Input" + "\"" + ".M[" + MNum + "].QS" + ",");
-                            sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
-                            sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
-                            //sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
-                            //sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            //sw.Write("\r\n" + " FW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Fw" + ",");
+                            //sw.Write("\r\n" + " BW_Manualrun_Factor:=" + "\"" + "Factor" + "\"" + ".Condition[" + MNum + "].M_Factor_Bw" + ",");
+                            sw.Write("\r\n" + " UP_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
+                            sw.Write("\r\n" + " DN_Manualrun_Factor:=" + "\"" + "TRUE" + "\"" + ",");
                             sw.Write("\r\n" + " UP_Manual_Button:=" + Manual_FW + ",");
                             sw.Write("\r\n" + " DN_Manual_Button:=" + Manual_BW + ",");
                             sw.Write("\r\n" + " M_Select := " + "\"" + "STA" + "\"" + ".M[" + MNum + "].Selected" + ",");
@@ -1471,7 +1471,7 @@ namespace Excel操作
                         }
                         else if (M_runStype == 3)
                         {
-                            sw.Write("\r\n" + @"///" + MNum + "运行程序");
+                            sw.Write("\r\n" + @"///" + MNum + "运行程序" + "       " + mNextNum + "." + (M1or2 - 1));
                             sw.Write("\r\n" + "\"" + "#YF#MotorStandard_UPDN" + "\"" + "(M_ID:=" + MNum + ",");
                             //  sw.Write("\r\n" + "(M_ID:=" + MNum+",");
                             sw.Write("\r\n" + " M_Next_ID :=" + offset + ",");
@@ -2325,7 +2325,7 @@ namespace Excel操作
                                 if (M1Type == "1")
                                 { sw.Write("\r\n" +"M"+ M_NO + ":" + "\"" + "#YF#StatusSTHF" + "\"" + ";"); }
                                 else if (M1Type == "2")
-                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusVF" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusVF_FB" + "\"" + ";"); }
                                 else if (M1Type == "3")
                                 { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusST" + "\"" + ";"); }
                                 else if (M1Type == "4")
@@ -2341,7 +2341,7 @@ namespace Excel操作
                                 if (M1Type == "1")
                                 { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusSTHF" + "\"" + ";"); }
                                 else if (M1Type == "2")
-                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusVF" + "\"" + ";"); }
+                                { sw.Write("\r\n" + "M" + M_NO + ":" + "\"" + "#YF#StatusVF_FB" + "\"" + ";"); }
                                 else if (M1Type == "3")
                                 { sw.Write("\r\n" + "M" + "M" + M_NO + ":" + "\"" + "#YF#StatusST" + "\"" + ";"); }
                                 else if (M1Type == "4")
@@ -2448,7 +2448,7 @@ namespace Excel操作
                                 sw.Write("\r\n" + " M_ID_Offset :=" + offset);
                                 sw.Write("," + "\r\n" + " Address:= " + 100);
                                 sw.Write("," + "\r\n" + " OP_Mode:= " + "\"" + AUTO + "\"");
-                                sw.Write("," + "\r\n" + " Sensor:= " + "\"" + "Input" + "\"" + ".M[" + MNum + "]." + M_BQ + "_前到位");
+                               // sw.Write("," + "\r\n" + " Sensor:= " + "\"" + "Input" + "\"" + ".M[" + MNum + "]." + M_BQ + "_前到位");
                                 if (KM_Err_Enable == "2")
                                 {
                                     sw.Write("," + "\r\n" + " KM_Err_Enable := " + "\"" + "False" + "\"");

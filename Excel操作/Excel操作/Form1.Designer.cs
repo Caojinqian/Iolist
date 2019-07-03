@@ -99,7 +99,7 @@ namespace Excel操作
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(487, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
@@ -124,7 +124,7 @@ namespace Excel操作
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(53, 12);
             this.Label3.TabIndex = 15;
-            this.Label3.Text = "20190510";
+            this.Label3.Text = "20190703";
             // 
             // label4
             // 
@@ -177,7 +177,7 @@ namespace Excel操作
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.Location = new System.Drawing.Point(486, 38);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 20);
@@ -206,7 +206,7 @@ namespace Excel操作
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.Location = new System.Drawing.Point(487, 109);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
