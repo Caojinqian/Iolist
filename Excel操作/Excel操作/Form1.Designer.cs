@@ -122,9 +122,9 @@ namespace Excel操作
             this.Label3.AutoSize = true;
             this.Label3.Location = new System.Drawing.Point(149, 387);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(53, 12);
+            this.Label3.Size = new System.Drawing.Size(119, 12);
             this.Label3.TabIndex = 15;
-            this.Label3.Text = "20190703";
+            this.Label3.Text = "20190814 手动为true";
             // 
             // label4
             // 
