@@ -2597,6 +2597,15 @@ namespace Excel操作
                                     sw.Write("," + "\r\n" + " T_Enable := " + "\"" + "True" + "\"");
                                 }
                                 sw.Write("," + "\r\n" + " T_Time := T#" + T_S1 + "S");
+                                if (bqEnable == "2")
+                                {
+                                    sw.Write("," + "\r\n" + " BQ_Enable := " + "\"" + "False" + "\"");
+                                }
+                                else
+                                {
+                                    sw.Write("," + "\r\n" + " BQ_Enable := " + "\"" + "True" + "\"");
+                                    sw.Write("," + "\r\n" + " BQ_Time := T#" + T_S1 + "S");
+                                }
                                 sw.Write("," + "\r\n" + " T_Reset := " + "\"" + TIME_RES + "\"");
                                 sw.Write("," + "\r\n" + " VF_Reset := " + "\"" + MOTO_RES + "\"");
                                 sw.Write("," + "\r\n" + " Job_ID:= " + "\"" + "Info" + "\"" + ".M[" + MNum + "].Work_ID);");
@@ -2799,6 +2808,15 @@ namespace Excel操作
                                     sw.Write("," + "\r\n" + " T_Enable := " + "\"" + "True" + "\"");
                                 }
                                 sw.Write("," + "\r\n" + " T_Time := T#" + T_S1 + "S");
+                                if (bqEnable == "2")
+                                {
+                                    sw.Write("," + "\r\n" + " BQ_Enable := " + "\"" + "False" + "\"");
+                                }
+                                else
+                                {
+                                    sw.Write("," + "\r\n" + " BQ_Enable := " + "\"" + "True" + "\"");
+                                    sw.Write("," + "\r\n" + " BQ_Time := T#" + T_S1 + "S");
+                                }
                                 sw.Write("," + "\r\n" + " T_Reset := " + "\"" + TIME_RES + "\"");
                                 sw.Write("," + "\r\n" + " VF_Reset := " + "\"" + MOTO_RES + "\"");
                                 sw.Write("," + "\r\n" + " Job_ID:= " + "\"" + "Info" + "\"" + ".M[" + MNum + "].Work_ID);");
